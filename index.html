@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おるの重賞予想ラボ | 人間×AIハイブリッド競馬予想</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B0E14;
+      --bg-card: #141923;
+      --bg-card-hover: #1A212E;
+      --bg-tag: #1F2737;
+      --border-color: #242D3D;
+      --text-main: #FFFFFF;
+      --text-muted: #8E9BAE;
+      --accent-green: #00E676;
+      --accent-green-dim: rgba(0, 230, 118, 0.12);
+      --accent-gold: #FFD700;
+      --accent-gold-dim: rgba(255, 215, 0, 0.12);
+      --accent-gold-border: rgba(255, 215, 0, 0.35);
+      --accent-blue: #2979FF;
+      --badge-g1: #FF3366;
+      --badge-g2: #2979FF;
+      --badge-g3: #00E5FF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.6;
+      padding-bottom: 70px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(11, 14, 20, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 230, 118, 0.2));
+      border: 1px solid var(--accent-gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 1.5px;
+      display: block;
+      margin-top: -2px;
+    }
+
+    .header-badge {
+      font-size: 11px;
+      background: var(--bg-tag);
+      border: 1px solid var(--border-color);
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+
+    /* Concept Banner */
+    .concept-banner {
+      background: linear-gradient(135deg, #171E2C 0%, #11151F 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 18px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .concept-text h2 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .concept-text p {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .concept-tags {
+      display: flex;
+      gap: 6px;
+    }
+
+    .tag-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .tag-oru { background: var(--accent-gold-dim); color: var(--accent-gold); border: 1px solid var(--accent-gold-border); }
+    .tag-ai { background: var(--accent-green-dim); color: var(--accent-green); border: 1px solid rgba(0, 230, 118, 0.3); }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 18px;
+      font-weight: 900;
+      margin: 30px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      background: var(--accent-green);
+      border-radius: 2px;
+    }
+
+    .section-title.gold::before {
+      background: var(--accent-gold);
+    }
+
+    /* Race Card */
+    .race-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .race-header {
+      padding: 18px;
+      background: linear-gradient(135deg, #1B2332 0%, #141923 100%);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .race-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .badge-grade {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-g1 { background: var(--badge-g1); }
+    .badge-g2 { background: var(--badge-g2); }
+    .badge-g3 { background: var(--badge-g3); color: #000; }
+
+    .race-venue {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .race-name {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .race-conditions {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ====================================================
+       ★ メイン看板：おるの渾身予想枠（VIPデザイン）
+       ==================================================== */
+    .oru-prediction-section {
+      background: linear-gradient(180deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 25, 35, 0) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px;
+      position: relative;
+    }
+
+    .oru-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .oru-label-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .oru-crown {
+      width: 30px;
+      height: 30px;
+      background: var(--accent-gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .oru-section-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--accent-gold);
+      letter-spacing: -0.3px;
+    }
+
+    .oru-badge-status {
+      font-size: 10px;
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--accent-gold-border);
+      color: var(--accent-gold);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    /* おるの本命カード */
+    .oru-picks-card {
+      background: #19202D;
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .oru-main-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .oru-honmei-circle {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #FFD700, #FFA000);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.35);
+    }
+
+    .oru-honmei-mark { font-size: 14px; line-height: 1; }
+    .oru-honmei-num { font-size: 18px; line-height: 1.1; font-family: 'Montserrat', sans-serif; }
+
+    .oru-horse-info h3 {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .oru-horse-sub {
+      font-size: 12px;
+      color: var(--accent-gold);
+      margin-top: 2px;
+    }
+
+    /* おるのひと言コメント吹き出し */
+    .oru-comment-bubble {
+      background: #111620;
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 14px;
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .oru-comment-author {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .oru-comment-body {
+      font-size: 13px;
+      color: #E2E8F0;
+      line-height: 1.6;
+    }
+
+    /* おるの勝負買い目 */
+    .oru-bets {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .oru-bets-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .oru-bets-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* 未入力時のプレースホルダー枠 */
+    .oru-placeholder-box {
+      background: rgba(255, 215, 0, 0.04);
+      border: 1px dashed var(--accent-gold-border);
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .oru-placeholder-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 4px;
+    }
+
+    .oru-placeholder-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ====================================================
+       🔬 AIラボのデータ・調教分析セクション
+       ==================================================== */
+    .ai-analysis-section {
+      padding: 18px;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(0, 230, 118, 0.03);
+    }
+
+    .ai-section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .ai-icon {
+      font-size: 16px;
+    }
+
+    .ai-section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent-green);
+    }
+
+    .ai-data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .ai-data-item {
+      background: var(--bg-tag);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+
+    .ai-data-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .ai-data-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .ai-text {
+      font-size: 12px;
+      color: #C0C8D6;
+      line-height: 1.7;
+    }
+
+    /* ====================================================
+       💰 広告枠 (収益化パーツ)
+       ==================================================== */
+    .ad-container {
+      margin: 22px 0;
+      text-align: center;
+    }
+
+    .ad-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    /* 横長バナー広告枠 */
+    .ad-banner-slot {
+      background: #121721;
+      border: 1px dashed #2A3547;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .ad-banner-slot:hover {
+      border-color: var(--accent-green);
+      background: #171E2C;
+    }
+
+    .ad-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .ad-banner-icon { font-size: 26px; }
+
+    .ad-banner-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .ad-banner-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .ad-banner-btn {
+      background: var(--accent-green);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 7px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* レース間 インフィード広告枠 */
+    .ad-native-slot {
+      background: linear-gradient(135deg, #171F2D 0%, #10141D 100%);
+      border: 1px solid #232D3E;
+      border-radius: 14px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .ad-native-slot:hover {
+      border-color: var(--accent-gold);
+    }
+
+    .ad-native-icon {
+      width: 60px;
+      height: 52px;
+      background: #202838;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .ad-native-content { text-align: left; }
+    .ad-native-tag { font-size: 10px; color: var(--accent-gold); font-weight: 700; }
+    .ad-native-title { font-size: 13px; font-weight: 700; color: #fff; }
+    .ad-native-desc { font-size: 11px; color: var(--text-muted); }
+    .ad-native-btn {
+      background: var(--accent-gold);
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* おすすめアフィリエイト枠 */
+    .affiliate-section {
+      margin: 32px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .affiliate-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .affiliate-header h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .affiliate-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .affiliate-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-tag);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-decoration: none;
+    }
+
+    .aff-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .aff-title { font-size: 13px; font-weight: 700; color: #FFFFFF; }
+    .aff-sub { font-size: 11px; color: var(--text-muted); }
+    .aff-tag {
+      font-size: 10px;
+      color: var(--accent-green);
+      background: var(--accent-green-dim);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-gold), var(--accent-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 12px auto;
+    }
+
+    .profile-name {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .profile-bio {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="#" class="brand">
+        <div class="brand-icon">🏇</div>
+        <div>
+          <div class="brand-title">おるの重賞予想ラボ</div>
+          <span class="brand-sub">HUMAN × AI HYBRID RACING LAB</span>
+        </div>
+      </a>
+      <span class="header-badge">次戦: エリザベス女王杯(G1)</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Concept Banner -->
+    <div class="concept-banner">
+      <div class="concept-text">
+        <h2>おるの直感 × AIデータ分析のハイブリッド予想</h2>
+        <p>管理人の勝負勘とnetkeiba調教・ラップ指数を融合した重賞攻略サイト</p>
+      </div>
+      <div class="concept-tags">
+        <span class="tag-pill tag-oru">👑 おる</span>
+        <span class="tag-pill tag-ai">🔬 AI</span>
+      </div>
+    </div>
+
+    <!-- 広告枠①: ヘッダー下 バナー枠 -->
+    <div class="ad-container">
+      <span class="ad-label">SPONSORED / 広告枠①</span>
+      <a href="#" class="ad-banner-slot">
+        <div class="ad-banner-left">
+          <div class="ad-banner-icon">📱</div>
+          <div>
+            <div class="ad-banner-title">【PR】楽天競馬で地方も中央も！入会金・年会費無料</div>
+            <div class="ad-banner-desc">馬券購入で楽天ポイント還元＆新規登録キャンペーン中</div>
+          </div>
+        </div>
+        <div class="ad-banner-btn">無料登録 ›</div>
+      </a>
+    </div>
+
+    <!-- ==============================================
+         次走レース：エリザベス女王杯（G1）更新枠組み
+         ============================================== -->
+    <h2 class="section-title gold">次回注目重賞：予想枠組み（テンプレート）</h2>
+
+    <article class="race-card">
+      <div class="race-header">
+        <div class="race-meta">
+          <span class="badge-grade badge-g1">G1</span>
+          <span class="race-venue">京都 11R</span>
+        </div>
+        <h1 class="race-name">エリザベス女王杯</h1>
+        <div class="race-conditions">
+          <span>芝 2200m（外 右）</span>
+          <span>11/15(日) 発走 15:40</span>
+          <span>定量 / 牝馬限定</span>
+        </div>
+      </div>
+
+      <!-- ★ おるの渾身予想枠（更新前：プレースホルダー状態） -->
+      <section class="oru-prediction-section">
+        <div class="oru-section-header">
+          <div class="oru-label-wrap">
+            <div class="oru-crown">👑</div>
+            <h2 class="oru-section-title">管理人・おるの渾身予想</h2>
+          </div>
+          <span class="oru-badge-status">枠順確定後に公開</span>
+        </div>
+
+        <!-- ここにおるさんの予想が入ります -->
+        <div class="oru-placeholder-box">
+          <div class="oru-placeholder-title">🎯 おるさんの予想を入力する枠です！</div>
+          <p class="oru-placeholder-desc">
+            週末にチャットで「本命◎とひと言」を送るだけで、<br>
+            ここにゴールドの豪華カード＆買い目が自動で反映されます。
+          </p>
+        </div>
+      </section>
+
+      <!-- 🔬 AIラボの出走馬・傾向速報 -->
+      <section class="ai-analysis-section">
+        <div class="ai-section-header">
+          <span class="ai-icon">🔬</span>
+          <h3 class="ai-section-title">AIラボのコース傾向・データ速報</h3>
+        </div>
+        <div class="ai-data-grid">
+          <div class="ai-data-item">
+            <div class="ai-data-label">京都芝2200mの脚質傾向</div>
+            <div class="ai-data-val">差し・先行が拮抗（持続力重視）</div>
+          </div>
+          <div class="ai-data-item">
+            <div class="ai-data-label">netkeiba調教データ</div>
+            <div class="ai-data-val">水曜追い切り後に更新予定</div>
+          </div>
+        </div>
+        <p class="ai-text">
+          3歳牝馬と古馬牝馬の激突。京都外回り2200mは3コーナーの下り坂から直線へのロングスパート勝負になりやすく、スタミナと決め手を兼ね備えた差し馬の台頭に要警戒です。
+        </p>
+      </section>
+    </article>
+
+    <!-- 広告枠②: レース間 インフィード広告枠 -->
+    <div class="ad-container">
+      <span class="ad-label">SPONSORED / 広告枠②</span>
+      <a href="#" class="ad-native-slot">
+        <div class="ad-native-icon">📊</div>
+        <div class="ad-native-content">
+          <div class="ad-native-tag">PICK UP TOOL</div>
+          <div class="ad-native-title">JRA公式データ『JRA-VAN スマホアプリ』</div>
+          <div class="ad-native-desc">調教時計・パドック速報・オッズ分析を完全網羅。まずは無料でお試し！</div>
+        </div>
+        <div class="ad-native-btn">詳細へ ›</div>
+      </a>
+    </div>
+
+    <!-- ==============================================
+         本日11/8(日)のレース結果・的中回顧
+         ============================================== -->
+    <h2 class="section-title">本日 11/8(日) レース回顧＆的中速報</h2>
+
+    <!-- RACE 1: みやこステークス（的中！） -->
+    <article class="race-card">
+      <div class="race-header">
+        <div class="race-meta">
+          <span class="badge-grade badge-g3">G3</span>
+          <span class="race-venue">京都 11R</span>
+          <span style="font-size:11px; background:var(--accent-green-dim); color:var(--accent-green); padding:2px 6px; border-radius:4px; font-weight:700;">◎単勝的中！</span>
+        </div>
+        <h1 class="race-name">みやこステークス</h1>
+        <div class="race-conditions">
+          <span>ダート 1800m / 良</span>
+          <span>1着: ロードクロンヌ（2人気） 単勝450円</span>
+        </div>
+      </div>
+
+      <!-- ★ おるの予想（掲載例イメージ） -->
+      <section class="oru-prediction-section">
+        <div class="oru-section-header">
+          <div class="oru-label-wrap">
+            <div class="oru-crown">👑</div>
+            <h2 class="oru-section-title">おるの本命馬＆回顧</h2>
+          </div>
+          <span class="oru-badge-status">1着的中🎯</span>
+        </div>
+
+        <div class="oru-picks-card">
+          <div class="oru-main-row">
+            <div class="oru-honmei-circle">
+              <span class="oru-honmei-mark">◎</span>
+              <span class="oru-honmei-num">11</span>
+            </div>
+            <div class="oru-horse-info">
+              <h3>ロードクロンヌ</h3>
+              <div class="oru-horse-sub">単勝 4.5倍（2番人気）見事1着！</div>
+            </div>
+          </div>
+
+          <!-- おるのひと言コメント例 -->
+          <div class="oru-comment-bubble">
+            <div class="oru-comment-author">💬 おるのひと言</div>
+            <div class="oru-comment-body">
+              「京都ダート1800mの実績が断トツ。調教の動きも抜群だったので自信の本命でした！好位から危なげなく抜け出す強い競馬でしたね。」
+            </div>
+          </div>
+
+          <div class="oru-bets">
+            <span class="oru-bets-label">勝負買い目</span>
+            <span class="oru-bets-value">単勝 11 / 馬連 11 - 1, 4, 7, 10</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🔬 AIラボの回顧 -->
+      <section class="ai-analysis-section">
+        <div class="ai-section-header">
+          <span class="ai-icon">🔬</span>
+          <h3 class="ai-section-title">AIラボのレース回顧</h3>
+        </div>
+        <p class="ai-text">
+          逃げたテスティモーネ（5人気）が粘る中、ロードクロンヌが1馬身半差をつけて快勝。3着に14番人気パシアンジャンが激走し波乱の決着となりましたが、軸馬の適性分析は完璧でした。
+        </p>
+      </section>
+    </article>
+
+    <!-- 広告枠③: おすすめ競馬サービス -->
+    <section class="affiliate-section">
+      <div class="affiliate-header">
+        <span class="ad-label">SPONSORED / 広告枠③</span>
+        <h3>🏇 当ラボおすすめ競馬サービス</h3>
+        <p>予想や馬券購入に役立つ公式サービス一覧（PR）</p>
+      </div>
+      <div class="affiliate-grid">
+        <a href="#" class="affiliate-item">
+          <div class="aff-left">
+            <span style="font-size:20px;">🎯</span>
+            <div>
+              <div class="aff-title">楽天競馬（地方競馬全場対応）</div>
+              <div class="aff-sub">馬券購入で楽天ポイントが最大10%還元</div>
+            </div>
+          </div>
+          <span class="aff-tag">無料登録 ›</span>
+        </a>
+        <a href="#" class="affiliate-item">
+          <div class="aff-left">
+            <span style="font-size:20px;">⚡</span>
+            <div>
+              <div class="aff-title">オッズパーク競馬</div>
+              <div class="aff-sub">ナイター競馬・重勝式馬券もスマホで一発</div>
+            </div>
+          </div>
+          <span class="aff-tag">公式へ ›</span>
+        </a>
+        <a href="#" class="affiliate-item">
+          <div class="aff-left">
+            <span style="font-size:20px;">🐴</span>
+            <div>
+              <div class="aff-title">DMMバヌーシー（一口馬主）</div>
+              <div class="aff-sub">アプリで愛馬の育成を見守る新感覚クラブ</div>
+            </div>
+          </div>
+          <span class="aff-tag">詳細を見る ›</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <div class="profile-card">
+      <div class="profile-avatar">🏇</div>
+      <div class="profile-name">おる（ORU）</div>
+      <p class="profile-bio">
+        「おるの重賞予想ラボ」管理人。<br>
+        データ分析×調教ラップ×当日の馬場バイアスを重視した本格重賞予想をお届けします。無理な穴狙いはせず、回収率と期待値の最大化を目指します！
+      </p>
+    </div>
+
+    <footer>
+      &copy; 2026 おるの重賞予想ラボ All Rights Reserved.
+    </footer>
+
+  </main>
+
+</body>
+</html>
