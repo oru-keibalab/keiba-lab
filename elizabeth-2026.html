@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【エリザベス女王杯2026】過去10年データ分析・傾向＆コース徹底攻略 | おるの重賞予想ラボ</title>
+  <meta name="description" content="2026年エリザベス女王杯（G1・京都芝2200m）の過去10年データを徹底解剖！年齢別・人気別・枠順別・前走ローテの好走傾向からコース攻略まで完全網羅。おるの渾身予想も枠順確定後に公開！">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B0E14;
+      --bg-card: #141923;
+      --bg-card-hover: #1A212E;
+      --bg-tag: #1F2737;
+      --border-color: #242D3D;
+      --text-main: #FFFFFF;
+      --text-muted: #8E9BAE;
+      --accent-green: #00E676;
+      --accent-green-dim: rgba(0, 230, 118, 0.12);
+      --accent-gold: #FFD700;
+      --accent-gold-dim: rgba(255, 215, 0, 0.12);
+      --accent-gold-border: rgba(255, 215, 0, 0.35);
+      --accent-blue: #2979FF;
+      --badge-g1: #FF3366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.7;
+      padding-bottom: 70px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(11, 14, 20, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 230, 118, 0.2));
+      border: 1px solid var(--accent-gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 1.5px;
+      display: block;
+      margin-top: -2px;
+    }
+
+    .back-btn {
+      font-size: 11px;
+      background: var(--bg-tag);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 20px;
+      color: var(--accent-green);
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+      display: flex;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin: 16px 0 10px;
+    }
+    .breadcrumbs a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* Article Hero */
+    .article-hero {
+      background: linear-gradient(135deg, #1A121E 0%, #11151F 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag-g1 {
+      background: var(--badge-g1);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .tag-date {
+      background: var(--bg-tag);
+      color: var(--accent-gold);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--accent-gold-border);
+    }
+
+    .tag-course {
+      background: var(--bg-tag);
+      color: var(--text-muted);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .article-title {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .article-lead {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Ad Container */
+    .ad-container {
+      margin: 22px 0;
+      text-align: center;
+    }
+    .ad-label {
+      display: block;
+      font-size: 9px;
+      color: #556275;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Content Section */
+    .section-title {
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-gold);
+      letter-spacing: -0.2px;
+    }
+
+    .data-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+    }
+
+    .data-card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .data-card-body {
+      font-size: 13px;
+      color: #D1D5DB;
+      line-height: 1.7;
+    }
+
+    .data-highlight {
+      color: #FF5252;
+      font-weight: 700;
+    }
+
+    .data-green {
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+
+    /* Custom Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 12px;
+    }
+    .data-table th, .data-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .data-table th {
+      background: var(--bg-tag);
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .data-table tr:hover {
+      background: var(--bg-card-hover);
+    }
+    .text-right {
+      text-align: right !important;
+    }
+
+    /* Prediction Slot */
+    .prediction-slot {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 25, 35, 0.95) 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin: 30px 0;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(255, 215, 0, 0.1);
+    }
+
+    .prediction-badge {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .prediction-heading {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .prediction-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Schedule Timeline */
+    .timeline {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .timeline-row {
+      display: flex;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border-color);
+      font-size: 12px;
+    }
+    .timeline-row:last-child {
+      border-bottom: none;
+    }
+    .timeline-date {
+      color: var(--accent-gold);
+      font-weight: 700;
+      min-width: 80px;
+    }
+    .timeline-desc {
+      color: #E5E7EB;
+    }
+
+    /* Profile */
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 32px 0 20px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .profile-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFD700, #FF3366);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .profile-info {
+      flex: 1;
+    }
+    .profile-name {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+    .profile-bio {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .x-follow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .x-follow-btn:hover {
+      background: #111;
+      border-color: #555;
+    }
+
+    /* Bottom Back */
+    .bottom-back {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .btn-return {
+      display: inline-block;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--accent-green);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">🏇</div>
+        <div>
+          <span class="brand-title">おるの重賞予想ラボ</span>
+          <span class="brand-sub">HYBRID KEIBA LAB</span>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">← TOPへ戻る</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <a href="index.html">TOP</a>
+      <span>&gt;</span>
+      <span>エリザベス女王杯2026 データ分析</span>
+    </div>
+
+    <!-- Hero -->
+    <section class="article-hero">
+      <div class="hero-tags">
+        <span class="tag-g1">G1</span>
+        <span class="tag-date">2026.11.15 (日) 15:40発走</span>
+        <span class="tag-course">京都11R 芝2200m(外) 牝馬限定</span>
+      </div>
+      <h1 class="article-title">【エリザベス女王杯2026】過去10年データ分析・傾向＆コース徹底攻略！</h1>
+      <p class="article-lead">秋の古馬牝馬最強決定戦！京都芝2200m（外回り）で開催されるエリザベス女王杯の過去10年データを徹底解剖。年齢・人気・枠順・前走ローテの黄金パターンを浮き彫りにします。</p>
+    </section>
+
+    <!-- 広告枠①: ヘッダー下 バナー枠（A8.net 320x50） -->
+    <div class="ad-container">
+      <span class="ad-label">SPONSORED / おすすめポイ活で馬券代GET</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:4px;">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+          <img border="0" width="320" height="50" alt="ポイ活" src="https://www22.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003013000&mc=1" style="max-width:100%; height:auto; display:block;">
+        </a>
+        <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" alt="">
+      </div>
+    </div>
+
+    <!-- 第1章: 過去10年の重要データ傾向 -->
+    <h2 class="section-title">📊 過去10年の重要データ傾向</h2>
+
+    <!-- 年齢別データ -->
+    <article class="data-card">
+      <h3 class="data-card-title">① 年齢別成績：3〜4歳馬が圧倒的！</h3>
+      <div class="data-card-body">
+        過去10年の勝ち馬10頭中、実に<span class="data-highlight">8頭が3〜4歳馬</span>！3着以内30頭中22頭を占めており、若い世代の勢いが際立っています。5歳以上になると複勝率は10%前後に急落するため、軸選びは3〜4歳馬が基本線です。
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>年齢</th>
+              <th>勝-連-複-着外</th>
+              <th class="text-right">勝率</th>
+              <th class="text-right">複勝率</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="data-green">3歳</span></td>
+              <td>2 - 3 - 2 - 23</td>
+              <td class="text-right">6.7%</td>
+              <td class="text-right"><span class="data-green">23.3%</span></td>
+            </tr>
+            <tr>
+              <td><span class="data-green">4歳</span></td>
+              <td>6 - 4 - 5 - 49</td>
+              <td class="text-right">9.4%</td>
+              <td class="text-right"><span class="data-green">23.4%</span></td>
+            </tr>
+            <tr>
+              <td>5歳</td>
+              <td>2 - 3 - 1 - 54</td>
+              <td class="text-right">3.3%</td>
+              <td class="text-right">10.0%</td>
+            </tr>
+            <tr>
+              <td>6歳以上</td>
+              <td>0 - 1 - 1 - 13</td>
+              <td class="text-right">0.0%</td>
+              <td class="text-right">13.3%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- 人気別データ -->
+    <article class="data-card">
+      <h3 class="data-card-title">② 人気別成績：3番人気が最強＆2着に大穴激走！</h3>
+      <div class="data-card-body">
+        最も信頼できるのは<span class="data-highlight">3番人気で【4-0-3-3】複勝率70.0%・勝率40.0%</span>と驚異的なハイアベレージ！<br>
+        一方、1番人気は【3-0-2-5】（複勝率50%）とまずまずですが、<span class="data-highlight">2番人気は【0-0-2-8】で過去10年未勝利</span>と苦戦傾向にあります。<br>
+        また、過去10年の2着馬のうち7頭が「7番人気以下の伏兵」となっており、馬連・3連単のヒモ荒れ高配当を常に狙えるレースです。
+      </div>
+    </article>
+
+    <!-- 枠順別データ -->
+    <article class="data-card">
+      <h3 class="data-card-title">③ 枠順傾向（京都開催）：1〜6枠の内〜中枠が圧倒！</h3>
+      <div class="data-card-body">
+        京都競馬場で行われた過去7回（2016〜19年、23〜25年）のデータを見ると、<span class="data-highlight">勝ち馬7頭はすべて1〜6枠から誕生</span>しています！<br>
+        特に1枠は【2-1-2-7】複勝率41.7%、2枠は【1-2-1-10】複勝率28.6%と内枠が絶好調。<br>
+        逆に7枠【0-0-0-16】、8枠【0-1-0-17】と外枠（馬番13番以降）は壊滅的な不振。京都芝2200m外回りは最初のコーナーまでの距離があるものの、内をロスなく立ち回れる枠が圧倒的に有利です。
+      </div>
+    </article>
+
+    <!-- 前走ローテ -->
+    <article class="data-card">
+      <h3 class="data-card-title">④ 前走ローテ：前走G1・G2の格が直結！</h3>
+      <div class="data-card-body">
+        前走の格がそのまま結果に直結します。3着以内30頭中26頭が前走G1またはG2組。<br>
+        ・<span class="data-green">府中牝馬S（アイルランドT）組</span>：【4-6-2-40】と最多の好走馬を輩出！特に4歳馬の成績が抜群。<br>
+        ・<span class="data-green">オールカマー組</span>：【2-0-0-14】で勝ち馬2頭。前走で強い牡馬相手に勝ちきっていた馬は有力。<br>
+        ・<span class="data-green">秋華賞組</span>：【1-3-1-17】で3歳馬の王道ローテ。<br>
+        ※前走3勝クラスやオープン特別組からの勝利・好走は極めて厳しく、重賞組を中心に組み立てるのが定石です。
+      </div>
+    </article>
+
+    <!-- 広告枠②: レース間 インフィード広告枠（A8.net 300x250） -->
+    <div class="ad-container">
+      <span class="ad-label">SPONSORED / おすすめ無料ポイ活で軍資金作り</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:6px;">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:12px; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
+          <img border="0" width="300" height="250" alt="ポイ活ならワラウ" src="https://www29.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003014000&mc=1" style="max-width:100%; height:auto; display:block;">
+        </a>
+        <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" alt="">
+      </div>
+    </div>
+
+    <!-- 第2章: コース攻略 -->
+    <h2 class="section-title">📐 京都芝2200m（外回り）コース攻略</h2>
+
+    <article class="data-card">
+      <h3 class="data-card-title">淀の坂越えと直線平坦が生む「持続力勝負」</h3>
+      <div class="data-card-body">
+        正面スタンド前からスタートし、外回りコースを1周強走るレイアウト。<br>
+        最大の勝負所は向正面半ばから始まる「3コーナーの丘（高低差約4mの淀の坂）」。坂の頂上から下り坂にかけてペースが上がり、直線入口でいかに脚を温存しながらスムーズに外へ出せるかが問われます。<br>
+        平坦な直線は約404m。純粋な一瞬のキレ味勝負というよりは、**長く良い脚を使えるスタミナ・持続力型の差し馬**が台頭しやすい舞台です。
+      </div>
+    </article>
+
+    <!-- 第3章: おるの渾身予想枠 -->
+    <section class="prediction-slot">
+      <span class="prediction-badge">🔥 SPECIAL PREDICTION</span>
+      <h3 class="prediction-heading">🎯 おるの渾身予想（本命◎＆買い目）</h3>
+      <p class="prediction-desc">
+        枠順確定（11月13日 金曜日）後に、出走各馬の調教気配・枠順の利・馬場状態を総合判断して公開予定です！<br>
+        エリザベス女王杯で狙うべき特注穴馬と勝負の買い目をお楽しみに！
+      </p>
+    </section>
+
+    <!-- スケジュール -->
+    <h2 class="section-title">🗓️ エリザベス女王杯 今週の予定</h2>
+    <div class="timeline">
+      <div class="timeline-row">
+        <span class="timeline-date">11/13 (金)</span>
+        <span class="timeline-desc">出走馬確定・枠順発表（おるの予想ラボも枠順データを即時更新！）</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-date">11/14 (土)</span>
+        <span class="timeline-desc">前日最終オッズ発表・当ラボの最終見解公開</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-date">11/15 (日)</span>
+        <span class="timeline-desc">15:40 発走！レース直前の馬体重・パドック速報</span>
+      </div>
+    </div>
+
+    <!-- 忍者AdMax インプレッション広告枠 -->
+    <div class="ad-container" style="margin: 32px 0;">
+      <span class="ad-label">SPONSORED / インプレッション広告</span>
+      <div style="display:flex; justify-content:center; align-items:center; margin-top:8px; min-height:100px;">
+        <!-- admax -->
+        <script src="https://adm.shinobi.jp/s/e95b06bd6b69ee0b778825791b1acd78"></script>
+        <!-- admax -->
+      </div>
+    </div>
+
+    <!-- プロフィール -->
+    <div class="profile-card">
+      <div class="profile-avatar">🐴</div>
+      <div class="profile-info">
+        <div class="profile-name">おる（おるの競馬予想）</div>
+        <p class="profile-bio">競馬歴9年目・オルフェーヴルをこよなく愛する競馬ファン。独自の穴馬発掘データとnetkeibaプロ分析を融合した重賞予想を発信中！</p>
+        <a href="https://x.com/keiba114ne" target="_blank" rel="noopener noreferrer" class="x-follow-btn">
+          𝕏 @keiba114ne をフォロー
+        </a>
+      </div>
+    </div>
+
+    <!-- TOPへ戻る -->
+    <div class="bottom-back">
+      <a href="index.html" class="btn-return">← 予想ラボ トップページへ戻る</a>
+    </div>
+
+  </main>
+
+</body>
+</html>
