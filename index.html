@@ -9,28 +9,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #0B0E14;
-      --bg-card: #141923;
-      --bg-card-hover: #1A212E;
-      --bg-tag: #1F2737;
-      --border-color: #242D3D;
-      --text-main: #FFFFFF;
-      --text-muted: #8E9BAE;
-      --accent-green: #00E676;
-      --accent-green-dim: rgba(0, 230, 118, 0.12);
-      --accent-gold: #FFD700;
-      --accent-gold-dim: rgba(255, 215, 0, 0.12);
-      --accent-gold-border: rgba(255, 215, 0, 0.35);
-      --accent-blue: #2979FF;
-      --badge-g1: #FF3366;
-      --badge-g2: #2979FF;
-      --badge-g3: #00E5FF;
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-tag: #f1f5f9;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent-green: #059669;
+      --accent-green-dim: #ecfdf5;
+      --accent-gold: #b45309;
+      --accent-gold-dim: #fef3c7;
+      --accent-gold-border: #fcd34d;
+      --accent-blue: #2563eb;
+      --badge-g1: #e11d48;
+      --badge-g2: #2563eb;
+      --badge-g3: #0284c7;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -49,70 +50,103 @@
 
     /* Header */
     header {
-      background: rgba(11, 14, 20, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 14px 0;
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+      color: #fff;
+      padding: 20px 0 16px;
+      box-shadow: 0 4px 12px rgba(4, 120, 87, 0.2);
     }
 
     .header-content {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
+      text-align: center;
       gap: 10px;
-      text-decoration: none;
-      color: var(--text-main);
     }
 
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 230, 118, 0.2));
-      border: 1px solid var(--accent-gold);
-      border-radius: 12px;
+    .brand-wrap {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 22px;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      object-fit: cover;
+      background: #fff;
     }
 
     .brand-title {
-      font-size: 17px;
+      font-size: 21px;
       font-weight: 900;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
     .brand-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 700;
-      color: var(--accent-gold);
+      color: #a7f3d0;
       letter-spacing: 1.5px;
       display: block;
-      margin-top: -2px;
+      margin-top: 2px;
     }
 
-    .header-badge {
-      font-size: 11px;
-      background: var(--bg-tag);
-      border: 1px solid var(--border-color);
-      padding: 5px 10px;
+    .date-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 20px;
-      color: var(--accent-green);
+      padding: 3px 14px;
+      font-size: 11px;
       font-weight: 700;
+      color: #fff;
+    }
+
+    /* Links Bar */
+    .top-links-bar {
+      background: #0f172a;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-chihou {
+      background: #f59e0b;
+      color: #0f172a;
+    }
+
+    .btn-x {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
     }
 
     /* Concept Banner */
     .concept-banner {
-      background: linear-gradient(135deg, #171E2C 0%, #11151F 100%);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 14px;
       padding: 14px 18px;
@@ -121,17 +155,19 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .concept-text h2 {
       font-size: 13px;
-      font-weight: 700;
-      color: #fff;
+      font-weight: 900;
+      color: var(--text-main);
     }
 
     .concept-text p {
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 2px;
     }
 
     .concept-tags {
@@ -148,16 +184,17 @@
     }
 
     .tag-oru { background: var(--accent-gold-dim); color: var(--accent-gold); border: 1px solid var(--accent-gold-border); }
-    .tag-ai { background: var(--accent-green-dim); color: var(--accent-green); border: 1px solid rgba(0, 230, 118, 0.3); }
+    .tag-ai { background: var(--accent-green-dim); color: var(--accent-green); border: 1px solid #a7f3d0; }
 
     /* Section Titles */
     .section-title {
       font-size: 18px;
       font-weight: 900;
-      margin: 30px 0 16px 0;
+      margin: 28px 0 14px 0;
       display: flex;
       align-items: center;
       gap: 8px;
+      color: var(--text-main);
     }
 
     .section-title::before {
@@ -169,22 +206,22 @@
     }
 
     .section-title.gold::before {
-      background: var(--accent-gold);
+      background: #f59e0b;
     }
 
     /* Race Card */
     .race-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
       margin-bottom: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     }
 
     .race-header {
       padding: 18px;
-      background: linear-gradient(135deg, #1B2332 0%, #141923 100%);
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -207,11 +244,12 @@
 
     .badge-g1 { background: var(--badge-g1); }
     .badge-g2 { background: var(--badge-g2); }
-    .badge-g3 { background: var(--badge-g3); color: #000; }
+    .badge-g3 { background: var(--badge-g3); }
 
     .race-venue {
       font-size: 12px;
       color: var(--text-muted);
+      font-weight: 700;
     }
 
     .race-name {
@@ -219,6 +257,7 @@
       font-weight: 900;
       margin-bottom: 6px;
       letter-spacing: -0.5px;
+      color: var(--text-main);
     }
 
     .race-conditions {
@@ -227,14 +266,15 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      font-weight: 500;
     }
 
     /* ====================================================
-       ★ メイン看板：おるの渾身予想枠（VIPデザイン）
+       ★ メイン看板：おるの渾身予想枠（白基調リッチデザイン）
        ==================================================== */
     .oru-prediction-section {
-      background: linear-gradient(180deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 25, 35, 0) 100%);
-      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);
+      border-bottom: 1px solid #fef3c7;
       padding: 18px;
       position: relative;
     }
@@ -255,13 +295,13 @@
     .oru-crown {
       width: 30px;
       height: 30px;
-      background: var(--accent-gold);
+      background: #f59e0b;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      color: #000;
+      color: #fff;
     }
 
     .oru-section-title {
@@ -283,11 +323,12 @@
 
     /* おるの本命カード */
     .oru-picks-card {
-      background: #19202D;
-      border: 1px solid var(--accent-gold-border);
+      background: #ffffff;
+      border: 2px solid #fde047;
       border-radius: 14px;
       padding: 16px;
       margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
     }
 
     .oru-main-row {
@@ -300,16 +341,16 @@
     .oru-honmei-circle {
       width: 52px;
       height: 52px;
-      background: linear-gradient(135deg, #FFD700, #FFA000);
+      background: linear-gradient(135deg, #f59e0b, #d97706);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #000;
+      color: #fff;
       font-weight: 900;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.35);
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
     }
 
     .oru-honmei-mark { font-size: 14px; line-height: 1; }
@@ -318,19 +359,20 @@
     .oru-horse-info h3 {
       font-size: 18px;
       font-weight: 900;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .oru-horse-sub {
       font-size: 12px;
       color: var(--accent-gold);
       margin-top: 2px;
+      font-weight: 700;
     }
 
     /* おるのひと言コメント吹き出し */
     .oru-comment-bubble {
-      background: #111620;
-      border-left: 3px solid var(--accent-gold);
+      background: #f8fafc;
+      border-left: 3px solid #f59e0b;
       border-radius: 0 10px 10px 0;
       padding: 12px 14px;
       position: relative;
@@ -349,7 +391,7 @@
 
     .oru-comment-body {
       font-size: 13px;
-      color: #E2E8F0;
+      color: #334155;
       line-height: 1.6;
     }
 
@@ -372,13 +414,13 @@
     .oru-bets-value {
       font-size: 13px;
       font-weight: 700;
-      color: #FFFFFF;
+      color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
     }
 
     /* 未入力時のプレースホルダー枠 */
     .oru-placeholder-box {
-      background: rgba(255, 215, 0, 0.04);
+      background: #fffbeb;
       border: 1px dashed var(--accent-gold-border);
       border-radius: 12px;
       padding: 24px 16px;
@@ -387,14 +429,15 @@
 
     .oru-placeholder-title {
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--accent-gold);
       margin-bottom: 4px;
     }
 
     .oru-placeholder-desc {
       font-size: 12px;
-      color: var(--text-muted);
+      color: #78350f;
+      line-height: 1.6;
     }
 
     /* ====================================================
@@ -403,7 +446,7 @@
     .ai-analysis-section {
       padding: 18px;
       border-bottom: 1px solid var(--border-color);
-      background: rgba(0, 230, 118, 0.03);
+      background: #f0fdf4;
     }
 
     .ai-section-header {
@@ -431,8 +474,8 @@
     }
 
     .ai-data-item {
-      background: var(--bg-tag);
-      border: 1px solid var(--border-color);
+      background: #ffffff;
+      border: 1px solid #dcfce7;
       border-radius: 8px;
       padding: 8px 10px;
     }
@@ -446,14 +489,57 @@
     .ai-data-val {
       font-size: 12px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .ai-text {
       font-size: 12px;
-      color: #C0C8D6;
+      color: #334155;
       line-height: 1.7;
     }
+
+    /* 記事リンクカード */
+    .article-links-wrap {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .article-btn {
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 12px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-elizabeth {
+      background: #ffffff;
+      border: 2px solid #f59e0b;
+      color: #b45309;
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.1);
+    }
+    .btn-elizabeth:hover { background: #fffbeb; }
+
+    .btn-musashino {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      color: #0369a1;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.1);
+    }
+    .btn-musashino:hover { background: #f0f9ff; }
+
+    .btn-daily {
+      background: #ffffff;
+      border: 2px solid #2563eb;
+      color: #1d4ed8;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
+    }
+    .btn-daily:hover { background: #eff6ff; }
 
     /* ====================================================
        💰 広告枠 (収益化パーツ)
@@ -470,152 +556,6 @@
       margin-bottom: 6px;
       display: inline-block;
       text-transform: uppercase;
-    }
-
-    /* 横長バナー広告枠 */
-    .ad-banner-slot {
-      background: #121721;
-      border: 1px dashed #2A3547;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      text-decoration: none;
-      position: relative;
-      transition: all 0.2s ease;
-    }
-
-    .ad-banner-slot:hover {
-      border-color: var(--accent-green);
-      background: #171E2C;
-    }
-
-    .ad-banner-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-align: left;
-    }
-
-    .ad-banner-icon { font-size: 26px; }
-
-    .ad-banner-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-
-    .ad-banner-desc {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .ad-banner-btn {
-      background: var(--accent-green);
-      color: #000;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 7px 12px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-
-    /* レース間 インフィード広告枠 */
-    .ad-native-slot {
-      background: linear-gradient(135deg, #171F2D 0%, #10141D 100%);
-      border: 1px solid #232D3E;
-      border-radius: 14px;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: 60px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      text-decoration: none;
-      transition: border-color 0.2s;
-    }
-
-    .ad-native-slot:hover {
-      border-color: var(--accent-gold);
-    }
-
-    .ad-native-icon {
-      width: 60px;
-      height: 52px;
-      background: #202838;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
-    .ad-native-content { text-align: left; }
-    .ad-native-tag { font-size: 10px; color: var(--accent-gold); font-weight: 700; }
-    .ad-native-title { font-size: 13px; font-weight: 700; color: #fff; }
-    .ad-native-desc { font-size: 11px; color: var(--text-muted); }
-    .ad-native-btn {
-      background: var(--accent-gold);
-      color: #000;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 7px 12px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-
-    /* おすすめアフィリエイト枠 */
-    .affiliate-section {
-      margin: 32px 0;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .affiliate-header {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .affiliate-header h3 {
-      font-size: 15px;
-      font-weight: 800;
-      color: #FFFFFF;
-    }
-
-    .affiliate-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .affiliate-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-tag);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px 14px;
-      text-decoration: none;
-    }
-
-    .aff-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .aff-title { font-size: 13px; font-weight: 700; color: #FFFFFF; }
-    .aff-sub { font-size: 11px; color: var(--text-muted); }
-    .aff-tag {
-      font-size: 10px;
-      color: var(--accent-green);
-      background: var(--accent-green-dim);
-      padding: 3px 8px;
-      border-radius: 4px;
       font-weight: 700;
     }
 
@@ -627,23 +567,24 @@
       padding: 22px;
       margin-top: 30px;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .profile-avatar {
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-gold), var(--accent-green));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
+      border: 2px solid #e2e8f0;
+      object-fit: cover;
+      background: #fff;
       margin: 0 auto 12px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .profile-name {
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
+      color: var(--text-main);
       margin-bottom: 4px;
     }
 
@@ -653,6 +594,20 @@
       max-width: 460px;
       margin: 0 auto;
       line-height: 1.6;
+    }
+
+    .btn-profile-x {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0f172a;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
     }
 
     footer {
@@ -668,18 +623,26 @@
   <!-- Header -->
   <header>
     <div class="container header-content">
-      <a href="#" class="brand">
-        <div class="brand-icon">🏇</div>
+      <a href="index.html" class="brand-wrap">
+        <img src="profile.png" alt="おるの重賞予想ラボ" class="brand-avatar">
         <div>
           <div class="brand-title">おるの重賞予想ラボ</div>
           <span class="brand-sub">HUMAN × AI HYBRID RACING LAB</span>
         </div>
       </a>
-      <div style="display:flex; gap:8px; align-items:center;">
-        <a href="https://oru-keibalab.github.io/chihou/" class="header-badge" style="text-decoration:none; background:rgba(255,109,0,0.15); border-color:#FF6D00; color:#FF9100;" target="_blank" rel="noopener noreferrer">🌙 地方競馬ナビ →</a>
-      </div>
+      <div class="date-badge">JRA中央競馬 重賞予想＆過去10年データ分析</div>
     </div>
   </header>
+
+  <!-- Top Navigation Links -->
+  <div class="top-links-bar">
+    <a href="https://oru-keibalab.github.io/chihou/" class="top-btn btn-chihou" target="_blank" rel="noopener">
+      <span>🌙 地方競馬ナビ（平日毎日更新中） →</span>
+    </a>
+    <a href="https://x.com/keiba114ne" class="top-btn btn-x" target="_blank" rel="noopener">
+      <span>𝕏 @keiba114ne をフォロー</span>
+    </a>
+  </div>
 
   <main class="container">
 
@@ -699,7 +662,7 @@
     <div class="ad-container">
       <span class="ad-label">SPONSORED / おすすめポイ活で馬券代GET</span>
       <div style="display:flex; justify-content:center; align-items:center; margin-top:4px;">
-        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
           <img border="0" width="320" height="50" alt="ポイ活" src="https://www22.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003013000&mc=1" style="max-width:100%; height:auto; display:block;">
         </a>
         <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HXSGH" alt="">
@@ -764,14 +727,14 @@
         <p class="ai-text">
           3歳牝馬と古馬牝馬の激突。京都外回り2200mは3コーナーの下り坂から直線へのロングスパート勝負になりやすく、スタミナと決め手を兼ね備えた差し馬の台頭に要警戒です。
         </p>
-        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
-          <a href="elizabeth-2026.html" style="display: block; text-align: center; background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 51, 102, 0.15)); border: 1px solid var(--accent-gold); color: var(--accent-gold); font-size: 13px; font-weight: 800; padding: 12px 16px; border-radius: 10px; text-decoration: none;">
+        <div class="article-links-wrap">
+          <a href="elizabeth-2026.html" class="article-btn btn-elizabeth">
             🏆 11/15(日) エリザベス女王杯(G1) 過去10年データ分析を見る →
           </a>
-          <a href="musashino-2026.html" style="display: block; text-align: center; background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(41, 121, 255, 0.15)); border: 1px solid #00E5FF; color: #00E5FF; font-size: 13px; font-weight: 800; padding: 12px 16px; border-radius: 10px; text-decoration: none;">
+          <a href="musashino-2026.html" class="article-btn btn-musashino">
             ⚡ 11/14(土) 武蔵野ステークス(G3) 過去10年データ分析を見る →
           </a>
-          <a href="daily-hai-2026.html" style="display: block; text-align: center; background: linear-gradient(135deg, rgba(41, 121, 255, 0.15), rgba(0, 230, 118, 0.15)); border: 1px solid #2979FF; color: #2979FF; font-size: 13px; font-weight: 800; padding: 12px 16px; border-radius: 10px; text-decoration: none;">
+          <a href="daily-hai-2026.html" class="article-btn btn-daily">
             🌟 11/14(土) デイリー杯2歳ステークス(G2) 過去10年データ分析を見る →
           </a>
         </div>
@@ -782,7 +745,7 @@
     <div class="ad-container">
       <span class="ad-label">SPONSORED / おすすめ無料ポイ活で軍資金作り</span>
       <div style="display:flex; justify-content:center; align-items:center; margin-top:6px;">
-        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:12px; box-shadow: 0 6px 18px rgba(0,0,0,0.35);">
+        <a href="https://px.a8.net/svt/ejp?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" rel="nofollow" style="display:inline-block; max-width:100%; overflow:hidden; border-radius:12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
           <img border="0" width="300" height="250" alt="ポイ活ならワラウ" src="https://www29.a8.net/svt/bgt?aid=261108128168&wid=001&eno=01&mid=s00000018660003014000&mc=1" style="max-width:100%; height:auto; display:block;">
         </a>
         <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGGBK+2S0UEQ+3ZZC+HY069" alt="">
@@ -790,9 +753,9 @@
     </div>
 
     <!-- ==============================================
-         本日11/8(日)のレース結果・的中回顧
+         前走レース結果・的中回顧
          ============================================== -->
-    <h2 class="section-title">本日 11/8(日) レース回顧＆的中速報</h2>
+    <h2 class="section-title">重賞レース回顧＆的中速報</h2>
 
     <!-- RACE 1: みやこステークス（的中！） -->
     <article class="race-card">
@@ -800,7 +763,7 @@
         <div class="race-meta">
           <span class="badge-grade badge-g3">G3</span>
           <span class="race-venue">京都 11R</span>
-          <span style="font-size:11px; background:var(--accent-green-dim); color:var(--accent-green); padding:2px 6px; border-radius:4px; font-weight:700;">◎単勝的中！</span>
+          <span style="font-size:11px; background:#dcfce7; color:#15803d; padding:2px 8px; border-radius:4px; font-weight:800;">◎単勝的中！</span>
         </div>
         <h1 class="race-name">みやこステークス</h1>
         <div class="race-conditions">
@@ -809,14 +772,14 @@
         </div>
       </div>
 
-      <!-- ★ おるの予想（掲載例イメージ） -->
+      <!-- ★ おるの予想 -->
       <section class="oru-prediction-section">
         <div class="oru-section-header">
           <div class="oru-label-wrap">
             <div class="oru-crown">👑</div>
             <h2 class="oru-section-title">おるの本命馬＆回顧</h2>
           </div>
-          <span class="oru-badge-status">1着的中🎯</span>
+          <span class="oru-badge-status" style="background:#dcfce7; border-color:#86efac; color:#15803d;">1着的中🎯</span>
         </div>
 
         <div class="oru-picks-card">
@@ -831,7 +794,7 @@
             </div>
           </div>
 
-          <!-- おるのひと言コメント例 -->
+          <!-- おるのひと言コメント -->
           <div class="oru-comment-bubble">
             <div class="oru-comment-author">💬 おるのひと言</div>
             <div class="oru-comment-body">
@@ -870,14 +833,14 @@
 
     <!-- Profile -->
     <div class="profile-card">
-      <img src="profile.png" alt="おる" class="profile-avatar" style="width:54px; height:54px; border-radius:50%; object-fit:cover; background:#fff; border:2px solid #3f3f46; margin:0 auto 12px;">
+      <img src="profile.png" alt="おる" class="profile-avatar">
       <div class="profile-name">おる（ORU）</div>
       <p class="profile-bio">
         「おるの重賞予想ラボ」管理人。<br>
         データ分析×調教ラップ×当日の馬場バイアスを重視した本格重賞予想をお届けします。無理な穴狙いはせず、回収率と期待値の最大化を目指します！
       </p>
       <div style="margin-top: 14px;">
-        <a href="https://x.com/keiba114ne" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); color: #fff; padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.2);">
+        <a href="https://x.com/keiba114ne" target="_blank" rel="noopener noreferrer" class="btn-profile-x">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           X（@keiba114ne）をフォロー
         </a>

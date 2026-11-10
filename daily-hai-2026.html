@@ -9,21 +9,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-main: #0B0E14;
-      --bg-card: #141923;
-      --bg-card-hover: #1A212E;
-      --bg-tag: #1F2737;
-      --border-color: #242D3D;
-      --text-main: #FFFFFF;
-      --text-muted: #8E9BAE;
-      --accent-green: #00E676;
-      --accent-green-dim: rgba(0, 230, 118, 0.12);
-      --accent-gold: #FFD700;
-      --accent-gold-dim: rgba(255, 215, 0, 0.12);
-      --accent-gold-border: rgba(255, 215, 0, 0.35);
-      --accent-blue: #2979FF;
-      --badge-g2: #2979FF;
+        :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-tag: #f1f5f9;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent-green: #059669;
+      --accent-green-dim: #ecfdf5;
+      --accent-gold: #b45309;
+      --accent-gold-dim: #fef3c7;
+      --accent-gold-border: #fcd34d;
+      --accent-blue: #2563eb;
+      --badge-g1: #e11d48;
+      --badge-g2: #2563eb;
+      --badge-g3: #0284c7;
     }
 
     * {
@@ -46,15 +48,16 @@
       padding: 0 16px;
     }
 
-    /* Header */
+        /* Header */
     header {
-      background: rgba(11, 14, 20, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+      color: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 14px 0;
+      padding: 12px 0;
+      box-shadow: 0 4px 12px rgba(4, 120, 87, 0.15);
     }
 
     .header-content {
@@ -68,32 +71,33 @@
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      color: var(--text-main);
+      color: #fff;
     }
 
     .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 230, 118, 0.2));
-      border: 1px solid var(--accent-gold);
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .brand-title {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 900;
       letter-spacing: -0.3px;
+      color: #fff;
     }
 
     .brand-sub {
       font-family: 'Montserrat', sans-serif;
       font-size: 9px;
       font-weight: 700;
-      color: var(--accent-gold);
+      color: #a7f3d0;
       letter-spacing: 1.5px;
       display: block;
       margin-top: -2px;
@@ -101,16 +105,17 @@
 
     .back-btn {
       font-size: 11px;
-      background: var(--bg-tag);
-      border: 1px solid var(--border-color);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       padding: 6px 12px;
       border-radius: 20px;
-      color: var(--accent-green);
-      font-weight: 700;
+      color: #065f46;
+      font-weight: 800;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
     }
 
     /* Breadcrumbs */
@@ -131,11 +136,12 @@
 
     /* Article Hero */
     .article-hero {
-      background: linear-gradient(135deg, #111A2E 0%, #11151F 100%);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 22px 20px;
       margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
     }
 
     .hero-tags {
@@ -235,7 +241,7 @@
 
     .data-card-body {
       font-size: 13px;
-      color: #D1D5DB;
+      color: #334155;
       line-height: 1.7;
     }
 
@@ -275,13 +281,13 @@
 
     /* Prediction Slot */
     .prediction-slot {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 25, 35, 0.95) 100%);
-      border: 2px solid var(--accent-gold);
+      background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+      border: 2px solid #f59e0b;
       border-radius: 16px;
       padding: 22px 20px;
       margin: 30px 0;
       position: relative;
-      box-shadow: 0 8px 24px rgba(255, 215, 0, 0.1);
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.1);
     }
 
     .prediction-badge {
@@ -299,13 +305,13 @@
     .prediction-heading {
       font-size: 17px;
       font-weight: 900;
-      color: #fff;
+      color: #b45309;
       margin-bottom: 8px;
     }
 
     .prediction-desc {
       font-size: 13px;
-      color: var(--text-muted);
+      color: #78350f;
       line-height: 1.7;
     }
 
@@ -369,14 +375,13 @@
 
     /* Profile */
     .profile-card {
-      background: var(--bg-card);
+      background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 18px;
-      margin: 32px 0 20px;
-      display: flex;
-      gap: 14px;
-      align-items: center;
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 30px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
     .profile-avatar {
       width: 48px;
