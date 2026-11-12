@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oru-keibalab.github.io/keiba-lab/sitemap.xml
