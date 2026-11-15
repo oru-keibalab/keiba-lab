@@ -32,7 +32,7 @@
     "headline": "【エリザベス女王杯2026】過去10年データ分析・傾向＆コース徹底攻略",
     "image": "https://oru-keibalab.github.io/keiba-lab/profile.png",
     "datePublished": "2026-11-09T00:00:00+09:00",
-    "dateModified": "2026-11-12T17:30:00+09:00",
+    "dateModified": "2026-11-15T09:40:00+09:00",
     "author": {
       "@type": "Person",
       "name": "おる",
@@ -475,6 +475,170 @@
       border-radius: 30px;
       text-decoration: none;
     }
+
+    /* ── 陣営コメント比較シート（スマホ最優先カード） ── */
+    .cm-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    @media (min-width: 560px) {
+      .cm-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .cm-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 13px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+    .cm-card.cm-hot {
+      border: 2px solid #f59e0b;
+      background: #fffbeb;
+    }
+    .cm-head {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .cm-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      color: #0f172a;
+      min-width: 20px;
+    }
+    .cm-name {
+      font-size: 14.5px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.2px;
+    }
+    .cm-jockey {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 700;
+    }
+    .cm-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: #b45309;
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      padding: 1px 7px;
+      border-radius: 999px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .cm-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 8px 0 8px;
+    }
+    .bd {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+    .bd-good { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    .bd-up   { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .bd-bad  { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+    .bd-unk  { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+    .bd-warn { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .bd-ok   { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
+    .cm-prev {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 7px 9px;
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: #0f172a;
+    }
+    .cm-prev-label {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #0284c7;
+      background: #e0f2fe;
+      border-radius: 4px;
+      padding: 0 5px;
+      margin-right: 3px;
+      vertical-align: 1px;
+    }
+    .cm-q { display: block; color: #334155; margin-top: 2px; }
+    .cm-q-unk { color: #94a3b8; font-style: normal; }
+    .cm-q-sub { display: block; font-size: 11px; color: #475569; margin-top: 3px; }
+    .cm-row {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 6px;
+      padding: 6px 0 0;
+      margin-top: 6px;
+      border-top: 1px dashed #e2e8f0;
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+    .cm-row .k {
+      font-size: 10.5px;
+      font-weight: 900;
+      color: #475569;
+      letter-spacing: 0.02em;
+    }
+    /* 適性マトリクス */
+    .cm-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      margin-top: 8px;
+    }
+    .cm-matrix th {
+      background: var(--bg-tag);
+      color: var(--text-muted);
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 5px 4px;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+    .cm-matrix th.mx-name-h { text-align: left; }
+    .cm-matrix td {
+      padding: 5px 4px;
+      border-bottom: 1px solid #eef2f7;
+      text-align: center;
+      font-weight: 800;
+    }
+    .cm-matrix td.mx-num { width: 30px; font-family: 'Montserrat', sans-serif; font-weight: 900; color: #0f172a; }
+    .cm-matrix td.mx-name { text-align: left; font-weight: 700; font-size: 11.5px; color: #0f172a; }
+    .cm-matrix tr.mx-hot td { background: #fffbeb; }
+    .cm-matrix td.mx-good { color: #15803d; }
+    .cm-matrix td.mx-up { color: #1d4ed8; }
+    .cm-matrix td.mx-bad { color: #b91c1c; }
+    .cm-matrix td.mx-unk { color: #94a3b8; }
+    .cm-matrix td.mx-warn { color: #b45309; }
+    .cm-matrix td.mx-note { color: #b45309; }
+    .cm-matrix td.mx-ok { color: #94a3b8; font-weight: 700; }
+    .cm-legend {
+      font-size: 10.5px;
+      color: #64748b;
+      line-height: 1.7;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 7px 9px;
+      margin-top: 8px;
+    }
+    .cm-src {
+      font-size: 10.5px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
@@ -570,389 +734,403 @@
     </article>
 
 
-    <!-- 陣営コメント＆前走本音比較シート -->
+    <!-- 陣営コメント＆前走本音比較シート（2026-11-15 最新裏取り反映） -->
     <h2 class="section-title">🗣️ 全18頭 陣営コメント＆前走本音比較シート</h2>
-    
+
     <!-- 3大注目ポイントまとめカード -->
     <article class="data-card" style="border: 2px solid #3b82f6; background: #eff6ff;">
       <h3 class="data-card-title" style="color: #1d4ed8; font-size: 15px;">
-        🔍 陣営コメントから浮き彫りになった「3大注目ポイント」
+        🔍 最新の裏取りで見えた「3大注目ポイント」
       </h3>
       <div class="data-card-body" style="color: #1e293b;">
+
         <div style="margin-bottom: 12px; padding: 10px; background: #ffffff; border-radius: 8px; border-left: 4px solid #0284c7;">
-          <strong style="color: #0369a1;">① ☔ 雨・道悪への本音：歓迎派 vs 嫌気派の明暗！</strong><br>
-          <span style="font-size: 12.5px; line-height: 1.6;">
-            日曜の京都は降水確率が高く、道悪適性が直結します。<br>
-            ・<strong style="color: #15803d;">道悪歓迎・不問：</strong> <strong>ジュウリョクピエロ</strong>（オルフェ産駒・道悪歓迎）、<strong>シャドウメテオ</strong>（オルフェ産駒・道悪不問）、<strong>セキトバイースト</strong>（「速い馬場NG、時計かかる馬場大歓迎」）、<strong>ジョスラン</strong>（兄エフフォーリアで荒れ馬場OK）<br>
-            ・<strong style="color: #b91c1c;">良馬場希望・雨マイナス：</strong> <strong>ステレンボッシュ</strong>（宮田師「軽い馬場がいい、雨だけが…」）、<strong>ラヴァンダ</strong>（中村師「ぐちゃぐちゃは良くないので乾いてほしい」）、<strong>ニシノティアモ</strong>（津村「雨が降らないでほしい」）、<strong>エストゥペンダ</strong>（高柳瑞師「跳びが綺麗なので雨はあまり…」）、<strong>アクアヴァーナル</strong>（松山「雨は降ってほしくない」）
+          <strong style="color: #0369a1;">① 📏 距離適性の明暗：2200mをどう見るか</strong><br>
+          <span style="font-size: 12.5px; line-height: 1.7;">
+            ・<strong style="color: #1d4ed8;">不安を本人が否定：</strong> <strong>7 カムニャック</strong>（川田騎手「距離は全く問題ありません」。2025オークス馬）<br>
+            ・<strong style="color: #b91c1c;">距離に慎重：</strong> <strong>1 ラヴァンダ</strong>（中村師「1F長い印象、コーナリングと下り坂が鍵」／デイリーでも裏取り済）、<strong>16 アクアヴァーナル</strong>（四位師「2200mがひとつ懸念材料」／ラジオNIKKEI）<br>
+            ・<strong style="color: #15803d;">実績十分：</strong> <strong>12 シャドウメテオ</strong>（2200m連勝中・同距離）、<strong>2 レイクラシック</strong>（2200m2着・オークス6着0.1秒差）、<strong>15 ラフターラインズ</strong>（オークス3着・フローラS1着）
           </span>
         </div>
 
         <div style="margin-bottom: 12px; padding: 10px; background: #ffffff; border-radius: 8px; border-left: 4px solid #eab308;">
-          <strong style="color: #a16207;">② 🐴 激変の兆し！馬具＆調整パターンの工夫</strong><br>
-          <span style="font-size: 12.5px; line-height: 1.6;">
-            ・<strong>ニシノティアモ：</strong> 前走「スイッチが入らなかった」反省から、<strong>津村騎手の直談判でブリンカー初装着！</strong>追い切りで劇的効果を確認。<br>
-            ・<strong>ステレンボッシュ：</strong> 前走ハード調教で気持ちが切れた反省から、今回は<strong>単走中心でリラックス重視</strong>。時計のかかるウッドで闘志蘇生！
+          <strong style="color: #a16207;">② ☔ 雨・道悪への温度差：前向き派と慎重派</strong><br>
+          <span style="font-size: 12.5px; line-height: 1.7;">
+            京都は朝から雨予報。道悪適性で明暗が分かれます。<br>
+            ・<strong style="color: #15803d;">前向き・不問：</strong> <strong>12 シャドウメテオ</strong>（金成師「雨は関係ない・枠も天気も不問」）、<strong>18 コガネノソラ</strong>（丹内「重馬場苦にせず」）、<strong>6 ヴーレヴー</strong>（武幸師「道悪こなせる」）、<strong>10 セキトバイースト</strong>（高速馬場合わず→渋り歓迎側）<br>
+            ・<strong style="color: #b91c1c;">渋化懸念：</strong> <strong>16 アクアヴァーナル</strong>（松山「雨は降ってほしくない」）、<strong>3 ステレンボッシュ</strong>（宮田師「いい馬場でやりたい」）、<strong>4 エストゥペンダ</strong>（跳びがきれいで雨不向き）、<strong>9 クイーンズウォーク</strong>（良馬場希望）<br>
+            ・<strong style="color: #b45309;">要注意：</strong> <strong>11 ジュウリョクピエロ</strong>の「渋る分にはプラス」は本人発言の裏取りが取れていません。今村騎手は「道悪に先入観を持たず」と慎重。
           </span>
         </div>
 
         <div style="padding: 10px; background: #ffffff; border-radius: 8px; border-left: 4px solid #ec4899;">
-          <strong style="color: #be185d;">③ 🏇 鞍上のトーン最高潮！勝負気配のジョッキーたち</strong><br>
-          <span style="font-size: 12.5px; line-height: 1.6;">
-            ・<strong>ラフターラインズ（武豊）：</strong> 「メチャクチャ乗りやすい。落ち着いていた。せっかくいい馬の依頼をいただいたので結果で返したい」<br>
-            ・<strong>クイーンズウォーク（C.デムーロ）：</strong> 「最後の1Fは飛んでいるような感じ。G1でも勝負になる能力」<br>
-            ・<strong>コガネノソラ（丹内祐次）：</strong> 「落ち着いて大人の女性に。背中からパワーアップを感じる。自信を持って臨める」
+          <strong style="color: #be185d;">③ 🩺 故障・休養明けリスク</strong><br>
+          <span style="font-size: 12.5px; line-height: 1.7;">
+            ・<strong style="color: #b45309;">15 ラフターラインズ</strong>：6月に<strong>左前脚手根骨骨折</strong>（全治3か月以上・手術不要）→9月に<strong>右前脚蹄の熱感</strong>で毎日王冠を回避。二段構えの故障明けで<strong>約6か月ぶり</strong>の実戦（小笠師「体調はとてもいい」）。<br>
+            ・<strong>11 ジュウリョクピエロ</strong>：骨折ではなく<strong>10月上旬の便秘（軽い疝痛）</strong>による調整遅れで秋華賞を見送り→その後完全回復（寺島師「予定通り」）。<br>
+            ・<strong>12 シャドウメテオ</strong>：スクミ（筋肉のこわばり）は解消済み「今回は不安要素なし」。<br>
+            ・残る15頭は故障・頓挫の報道なし。今週の追い切り回避・歩様異常も確認されず、18頭揃って出走予定です。
           </span>
         </div>
       </div>
     </article>
 
-    <!-- 全18頭 詳細比較テーブル -->
+    <!-- ひと目でわかる適性マトリクス -->
     <article class="data-card">
-      <h3 class="data-card-title">📋 出走全18頭 陣営コメント・前走本音一覧</h3>
-      <div style="font-size: 12px; color: #64748b; margin-bottom: 10px;">
-        ※横スクロールで表全体をご覧いただけます
+      <h3 class="data-card-title">⚡ ひと目でわかる適性マトリクス（全18頭）</h3>
+      <table class="cm-matrix">
+        <thead>
+          <tr>
+            <th class="mx-num">馬番</th>
+            <th class="mx-name-h">馬名</th>
+            <th>道悪</th>
+            <th>距離</th>
+            <th>状態</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr><td class="mx-num">1</td><td class="mx-name">ラヴァンダ</td><td class="mx-bad">△</td><td class="mx-bad">△</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">2</td><td class="mx-name">レイクラシック</td><td class="mx-unk">？</td><td class="mx-up">○</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">3</td><td class="mx-name">ステレンボッシュ</td><td class="mx-bad">△</td><td class="mx-unk">？</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">4</td><td class="mx-name">エストゥペンダ</td><td class="mx-bad">△</td><td class="mx-unk">？</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">5</td><td class="mx-name">ニシノティアモ</td><td class="mx-unk">？</td><td class="mx-up">○</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">6</td><td class="mx-name">ヴーレヴー</td><td class="mx-good">◎</td><td class="mx-good">◎</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">7</td><td class="mx-name">カムニャック</td><td class="mx-up">○</td><td class="mx-good">◎</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">8</td><td class="mx-name">レーゼドラマ</td><td class="mx-unk">？</td><td class="mx-unk">？</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">9</td><td class="mx-name">クイーンズウォーク</td><td class="mx-bad">△</td><td class="mx-unk">？</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">10</td><td class="mx-name">セキトバイースト</td><td class="mx-good">◎</td><td class="mx-bad">△</td><td class="mx-ok">－</td></tr>
+            <tr class="mx-hot"><td class="mx-num">11</td><td class="mx-name">ジュウリョクピエロ</td><td class="mx-unk">？</td><td class="mx-good">◎</td><td class="mx-note">△</td></tr>
+            <tr><td class="mx-num">12</td><td class="mx-name">シャドウメテオ</td><td class="mx-good">◎</td><td class="mx-good">◎</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">13</td><td class="mx-name">ジョスラン</td><td class="mx-up">○</td><td class="mx-up">○</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">14</td><td class="mx-name">チェルヴィニア</td><td class="mx-unk">？</td><td class="mx-unk">？</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">15</td><td class="mx-name">ラフターラインズ</td><td class="mx-up">○</td><td class="mx-up">○</td><td class="mx-warn">⚠</td></tr>
+            <tr><td class="mx-num">16</td><td class="mx-name">アクアヴァーナル</td><td class="mx-bad">△</td><td class="mx-bad">△</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">17</td><td class="mx-name">ケリフレッドアスク</td><td class="mx-unk">？</td><td class="mx-up">○</td><td class="mx-ok">－</td></tr>
+            <tr><td class="mx-num">18</td><td class="mx-name">コガネノソラ</td><td class="mx-good">◎</td><td class="mx-up">○</td><td class="mx-ok">－</td></tr>
+        </tbody>
+      </table>
+      <div class="cm-legend">
+        <strong>道悪</strong>／<strong>距離</strong>　◎歓迎・適性十分　○前向き・問題なし　△慎重・懸念　？未確認<br>
+        <strong>状態</strong>　⚠故障明け（長期休養）　△直前の体調崩し等　－故障・頓挫の報道なし
       </div>
-      <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid var(--border-color);">
-        <table class="data-table" style="min-width: 820px; font-size: 12.5px; margin: 0;">
-          <thead>
-            <tr style="background: #f1f5f9;">
-              <th style="width: 44px; text-align: center;">枠</th>
-              <th style="width: 44px; text-align: center;">馬番</th>
-              <th style="width: 130px;">馬名 / 騎手</th>
-              <th style="width: 180px;">前走レース ＆ レース後本音コメント</th>
-              <th style="width: 230px;">今回調教・追い切り ＆ 陣営コメント</th>
-              <th style="width: 90px; text-align: center;">道悪適性</th>
-              <th style="width: 140px;">ポイント要約</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-1">1</span></td>
-              <td style="text-align: center; font-weight: 800;">1</td>
-              <td>
-                <strong>ラヴァンダ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">岩田望来</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">アイルランドT 3着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">横山和生「前の2頭が強かった。この馬も頑張ってくれている」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">中村師「やれば動くタイプ。単走で気分良く動いた。マイルCSだと4角の下りで加速できないので、4角まで動かなくていいエリ女を選んだ」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>中村師「最内枠なら道中はロスなく回れる。ぐちゃぐちゃの馬場は良くないので、できれば乾いてほしい。2200mはいくらか長い印象」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">△ (良馬場希望)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">良馬場希望・距離やや長め懸念</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-1">1</span></td>
-              <td style="text-align: center; font-weight: 800;">2</td>
-              <td>
-                <strong>レイクラシック</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">西村淳也</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">オークス 6着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">M.ディー「作戦通りの形。直線までいい形で一瞬勝てるかと思ったが、最後の100mで脚色が同じに。まだ体がしっかりしていない面が出た」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">新谷師「凄く軽い反応で合格点。時計も良く、西村淳騎手も『先週より良くなった』と。どっしりして成長を感じるし、距離は持つ」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>新谷師「以前より体幹がしっかりしてきた。千八のワンターンより舞台は全然いい。距離はあった方がいい」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (成長力警戒)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">オークス時より体幹強化・距離延長歓迎</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-2">2</span></td>
-              <td style="text-align: center; font-weight: 800;">3</td>
-              <td>
-                <strong>ステレンボッシュ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">池添謙一</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">新潟記念 11着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">戸崎圭太「最後も反応がなかったし、気持ちがどうなのかなという感じ」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">宮田師「前走は併せ馬でハードにやったが最後まで気持ちが続かなかった。今回は単走中心。時計がかかるウッドでもギアを上げ、威張る感じ。気持ち戻った」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>宮田師「そつなく回ってほしいと思っていたので2枠3番は絶好。ただ雨予報もあるので天気だけ。軽い馬場の方がいい」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">▲ (良馬場希望・雨懸念)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">単走調整で闘志復活・雨だけが最大の敵</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-2">2</span></td>
-              <td style="text-align: center; font-weight: 800;">4</td>
-              <td>
-                <strong>エストゥペンダ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">荻野極</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">関越S 2着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">荻野極「いい形で運べたが勝ち馬の決め手に屈した。それでも力を示している」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">伴騎手「心と体がマッチしてきた。あとは極が頑張るだけ」高柳瑞師「打撲で前走回避したが今は気にならない。折り合い改善ししまいの脚を生かしたい」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>高柳瑞師「与えられた枠で頑張るだけ。順調。跳びがきれいな馬なので、雨はあまりよくないかな」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">△ (綺麗な跳び・雨不向き)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">折り合い改善・跳び綺麗で雨マイナス</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-3">3</span></td>
-              <td style="text-align: center; font-weight: 800;">5</td>
-              <td>
-                <strong>ニシノティアモ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">津村明秀</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">アイルランドT 7着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">津村明秀「ジリジリ流れ込むだけに。いい頃のスイッチが入っていなかった。道具をつけて工夫してもいいかも」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">津村明秀「最近おとなしいので自ら進言してブリンカー着用。いつもより良く効果ある。本番も着ける。2200mは守備範囲だが雨が降らないでほしい」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>上原佑師「3枠5番はいい枠。ブリンカー効果でピリッとした。年齢重ねてズブさ出たので距離延びるのはプラス」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">△ (良馬場希望・雨NG)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">津村進言でブリンカー初装着・雨はNG</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-3">3</span></td>
-              <td style="text-align: center; font-weight: 800;">6</td>
-              <td>
-                <strong>ヴーレヴー</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">吉田隼人</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">クイーンS 3着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">横山典弘「よく頑張った」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">吉田隼人「しまい重点で楽に動けた。手がかからないタイプ、トモもしっかりしてきた」武幸師「以前は距離が持つメンタルでなかったが、どっしりして折り合いがつくようになった」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>武幸師「いい状態で来られている。前走の競馬ができれば2200mでも」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (トモ強化)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">精神面成長で折り合い改善・2200m克服へ</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-4">4</span></td>
-              <td style="text-align: center; font-weight: 800;">7</td>
-              <td>
-                <strong>カムニャック</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">川田将雅</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">アイルランドT 1着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">川田将雅「勝ててホッとした。テンション高かったが辛抱してくれた。1回使ったことで抜けてくれればいい。オークス馬だし精神面の不安はあるがこれだけの内容で走れる」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">友道師「1週前しっかり追って体はできているので、今週は精神状態維持を意識して坂路単走。昨秋の悔しさ（秋華賞16着）から1年、能力を発揮してほしい」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>友道師「真ん中（4枠7番）でいいんじゃないかな。外は嫌だった（スタンド前発走で近くなるから）。落ち着きが一番の鍵」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (地力上位)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">前哨戦完勝・スタンドから遠い真ん中枠歓迎</span></td>
-            </tr>
-            <tr style="background: #f0fdf4;">
-              <td style="text-align: center;"><span class="waku-badge waku-4">4</span></td>
-              <td style="text-align: center; font-weight: 800;">8</td>
-              <td>
-                <strong>レーゼドラマ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">松若風馬</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">新潟記念 14着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">松若風馬「道中リズム良く運べたが勝負所で一杯に。相手も強かった」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">辻野師「フィジカル的にはまだ足りないところがあるが、メンタルはうまく持ってこられた。小倉で勝った時もそうだが少し緩みがある方がいいイメージ」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>辻野師「自分のリズムが大事な馬。できれば外枠がよかった」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #dcfce7; color: #15803d; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 11px;">◎ (馬場緩み歓迎)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">馬場に緩みがあるのは歓迎・内目枠に課題</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-5">5</span></td>
-              <td style="text-align: center; font-weight: 800;">9</td>
-              <td>
-                <strong>クイーンズウォーク</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">Ｃ．デムーロ</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">アイルランドT 8着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">西村淳也「リズム重視で行ったが最後に脚を使えなかった。敗因がわからない」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">C.デムーロ「1週前追いは飛んでいるような感じ。乗った感触からG1でも勝負になる能力。今週は反応を確かめただけ。いい状態」中内田師「前走のダメージなく順調」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>中内田師「右回り重賞で結果が出ていないが、馬のバランスが随分良くなっているので大丈夫かなと思う」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (パワー型)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">C.デムーロ絶賛の動き・右回り克服が鍵</span></td>
-            </tr>
-            <tr style="background: #f0fdf4;">
-              <td style="text-align: center;"><span class="waku-badge waku-5">5</span></td>
-              <td style="text-align: center; font-weight: 800;">10</td>
-              <td>
-                <strong>セキトバイースト</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">浜中俊</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">アイルランドT 15着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">浜中俊「去年スローにしてダメだったので自分のペースで運ぼうとしたが速い馬場が合わない。休み明けも動かないので今日は仕方ない」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">浜中俊「1回使って前走より良くなった。テンが速くないので外枠がほしい」四位師「先週ビシッとやったので半マイルから。気持ち良く走らせた」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>四位師「距離は若干長い気もするが、昨年の内容を見ていると大丈夫なんじゃないかな。時計がかかる馬場は歓迎」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #dcfce7; color: #15803d; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 11px;">◎ (速い馬場NG・道悪好転)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">叩いて上積み大・時計かかる馬場は大歓迎の逃げ馬</span></td>
-            </tr>
-            <tr style="background: #fef08a !important;">
-              <td style="text-align: center;"><span class="waku-badge waku-6">6</span></td>
-              <td style="text-align: center; font-weight: 800;">11</td>
-              <td>
-                <strong>ジュウリョクピエロ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">今村聖奈</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">オークス 1着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">今村聖奈「夢見てるみたい。彼女のことは一番分かってるので落ち着いて乗れた。ついてこいって男気ある馬」寺島師「我慢させられるだけ我慢させて直線スッと反応してくれた」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">今村聖奈「1週前コメントで心配されたが、今週は指示通りの時計で綺麗なラップ。先週より反応良くなり最後うまく抱えてゴールできた」寺島師「カイバよく食べて体重492kg前後（前走464kgから+28kg）。体高がとても伸びた」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>寺島師「内・外を見られる絶好枠。クリスチャン、豊さん、ルメールを見ながら運べる。外回りはいいし斤量恩恵（54kg）もある。オルフェ産駒でタフな馬場も味方」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #dcfce7; color: #15803d; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 11px;">🔥 特注 (オルフェ産駒・道悪歓迎)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">馬体重+28kg成長・オルフェ産駒で雨予報は最強の追い風！</span></td>
-            </tr>
-            <tr style="background: #f0fdf4;">
-              <td style="text-align: center;"><span class="waku-badge waku-6">6</span></td>
-              <td style="text-align: center; font-weight: 800;">12</td>
-              <td>
-                <strong>シャドウメテオ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">三浦皇成</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">新潟牝馬S 1着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">三浦皇成「2200mで強い勝ち方。馬が充実している」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">金成師「最近はスクミ（筋肉痛）がなくなって体調が良くなった。筋肉の厚み、馬体の張りも良くなり充実。オルフェーヴル産駒らしい不安要素が今回は皆無」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>金成師「枠はこの舞台なので関係ない。道悪についても（オルフェ産駒で）あまり関係ない。連勝した2200mで」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #dcfce7; color: #15803d; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 11px;">◎ (オルフェ産駒・道悪不問)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">2200m連勝中・オルフェ産駒で道悪苦にせず体調万全</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-7">7</span></td>
-              <td style="text-align: center; font-weight: 800;">13</td>
-              <td>
-                <strong>ジョスラン</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">Ｃ．ルメール</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">アイルランドT 2着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">C.ルメール「いい位置でレースができた。負けたが勝った馬はG1レベル。以前より反応が良くなりいいパフォーマンス」鹿戸師「早め先頭で目標がなかった。折り合いつけば確実にくる」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">鹿戸師「折り合いが一番の鍵。荒れた馬場、少し力の要る馬場も兄エフフォーリアも走ったし血統的に道悪もこなせるはず。一戦ごとに力をつけている」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>鹿戸師「枠は周りを見ながら運べるし、極端な内でなければと思っていたのでいい。メンバー強くなるが楽しみ」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (エフフォーリア全妹・力要る馬場OK)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">ルメール継続・兄エフフォーリアで道悪も問題なし</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-7">7</span></td>
-              <td style="text-align: center; font-weight: 800;">14</td>
-              <td>
-                <strong>チェルヴィニア</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">Ｔ．マーカンド</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">新潟記念 8着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">津村明秀「逃げる馬がいなくて番手につけたかったが進まなかった。追い出してもブレーキをかけている感じで、ファイトできない精神状態だった」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">太田助手「入厩してからいいフットワーク維持。ラストの時計は地味だがゴール板過ぎてから止めるまでの動きはここ最近になく良かった。燃費が上がり同じストライドをキープできる」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>木村師「決まった枠で、引き続き取り組んでいきます」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">▲ (良馬場ベスト)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">精神面リセット・調教の燃費改善で二冠牝馬の巻き返し期す</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-7">7</span></td>
-              <td style="text-align: center; font-weight: 800;">15</td>
-              <td>
-                <strong>ラフターラインズ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">武豊</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">オークス 3着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">D.レーン「終いは素晴らしい脚、長いスパンのハイスピードを見せた。将来期待できる馬」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">武豊「初めてで比較はつかないがメチャクチャ乗りやすい。落ち着いていた。せっかくいい馬の依頼をいただいたので結果で返したい」小笠師「操縦性が高く最後の伸びは自信ある」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>小笠師「京都2200mもいい。気性的にも落ち着いてきてゲートもうまく立ち回ってくれそう」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (京都外回り歓迎)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">武豊絶賛の操縦性・オークス上がり最速タイの破壊力</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-8">8</span></td>
-              <td style="text-align: center; font-weight: 800;">16</td>
-              <td>
-                <strong>アクアヴァーナル</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">松山弘平</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">ケフェウスS 1着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">松山弘平「中団から早めに動く形でしっかり勝ち切ってくれた。力をつけている」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">松山弘平「2200mの条件はいい。雨は降ってほしくないですね」四位師「直線ハッピーな感じで伸ばしてと指示。フレッシュで元気。脚質の幅が広がっている」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>松山弘平「雨は降ってほしくない」四位師「2200mでも上手に走ってくれるのでは」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">△ (雨降ってほしくない)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">前走新境地の差し切り・松山は雨NGを強調</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-8">8</span></td>
-              <td style="text-align: center; font-weight: 800;">17</td>
-              <td>
-                <strong>ケリフレッドアスク</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">北村友一</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">クイーンS 8着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">北村友一「洋芝で時計がかかった分、最後甘くなった」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">田代助手「反応を確かめる程度でいい動き。最近は落ち着きが出て無駄な動きをしなくなっている。叩いた上積みを感じる」野並助手「太め感抜けて前走と同じくらいで出せる」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>田代助手「落ち着きが出た今なら、これぐらいの距離（2200m）が良さそう」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (スタミナ型)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">叩き2戦目で上積み・距離延長はプラス</span></td>
-            </tr>
-            <tr>
-              <td style="text-align: center;"><span class="waku-badge waku-8">8</span></td>
-              <td style="text-align: center; font-weight: 800;">18</td>
-              <td>
-                <strong>コガネノソラ</strong><br>
-                <span style="font-size: 11.5px; color: #64748b;">丹内祐次</span>
-              </td>
-              <td>
-                <span style="font-weight: 700; color: #0284c7;">クイーンS 2着</span><br>
-                <span style="font-size: 11.5px; color: #334155; line-height: 1.5;">丹内祐次「折り合いはついたしリズムは完璧。4コーナーで勝ち馬に1、2歩先に動かれてしまいその差。能力はある」</span>
-              </td>
-              <td>
-                <span style="font-size: 11.5px; color: #1e293b; line-height: 1.5;">丹内祐次「2週前・1週前と本当にいい動きで前走よりいい感じ。落ち着いて大人の女性に。パワーアップを背中から感じる。自信を持って臨める」菊沢師「福島牝馬S勝った時からここが目標」</span><br>
-                <span style="font-size: 11px; color: #475569; display: block; margin-top: 4px;"><strong>枠・適性：</strong>菊沢師「天皇賞も大外（ダノンデサイル）が勝った。大外ならやることは決まっているし、相手を見ながら」</span>
-              </td>
-              <td style="text-align: center;"><span style="background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px;">○ (パワーアップ)</span></td>
-              <td><span style="font-size: 11.5px; font-weight: 700; color: #0f172a;">丹内自信のコメント・大外枠から一発狙う</span></td>
-            </tr>
-          </tbody>
-        </table>
+    </article>
+
+    <!-- 全18頭 詳細カード -->
+    <article class="data-card">
+      <h3 class="data-card-title">📋 全18頭 前走本音 × 道悪 × 距離 × 状態</h3>
+      <div style="font-size: 11.5px; color: #64748b; margin-bottom: 10px; line-height: 1.6;">
+        前走のレース後コメント、道悪・距離への陣営の本音、故障・休養明けの情報を1頭ずつ整理しました。
+      </div>
+      <div class="cm-grid">
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-1">1</span>
+            <span class="cm-num">1</span>
+            <span class="cm-name">ラヴァンダ</span>
+            <span class="cm-jockey">岩田望来</span>
+            <span class="cm-tag">最内枠でロスなく</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-bad">△ 良馬場希望</span><span class="bd bd-bad">△ 距離に懸念</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>アイルランドT 3着</strong>（横山和生）
+            <span class="cm-q">「この馬も伸びているが、前にいる2頭が強かった」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>中村師「ぐちゃぐちゃの馬場は良くないので、できれば乾いてほしい」（馬場の発言自体は裏取りなし）</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>中村師「1F長い印象。コーナリングもあまり上手ではなく、下り坂をうまく回れるかどうか」（デイリーでも裏取り済）</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>2025年2月に喉の手術も、復帰後に重賞勝ち。今に響く話ではない</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-1">1</span>
+            <span class="cm-num">2</span>
+            <span class="cm-name">レイクラシック</span>
+            <span class="cm-jockey">西村淳也</span>
+            <span class="cm-tag">条件替わりに含み</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-unk">？ 未確認</span><span class="bd bd-up">○ 延長プラス</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>ローズS 10着</strong>
+            <span class="cm-q">「注文のつかないいい馬。ただ合った条件があるかもしれない」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>道悪についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>新谷師「距離延長はプラス」。2200m2着・オークス6着0.1秒差の実績</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-2">2</span>
+            <span class="cm-num">3</span>
+            <span class="cm-name">ステレンボッシュ</span>
+            <span class="cm-jockey">池添謙一</span>
+            <span class="cm-tag">気持ちが戻るか</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-bad">△ 良馬場希望</span><span class="bd bd-unk">？ 未確認</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>新潟記念 11着</strong>
+            <span class="cm-q">「最後は反応がなく、気持ちがどうかという感じ」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>宮田師「いい馬場でやりたい」「雨予報が気がかり」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>距離についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>前走のハード調教で気持ちが切れた反省から、今回は単走中心で立て直し</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-2">2</span>
+            <span class="cm-num">4</span>
+            <span class="cm-name">エストゥペンダ</span>
+            <span class="cm-jockey">荻野極</span>
+            
+          </div>
+          <div class="cm-badges"><span class="bd bd-bad">△ 雨不向き</span><span class="bd bd-unk">？ 未確認</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>関越S 1着</strong>
+            <span class="cm-q">「雰囲気・走りともすべて絶好調だった」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>高柳瑞師・鈴木助手「跳びがきれいで雨は合わなさそう」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>距離についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-3">3</span>
+            <span class="cm-num">5</span>
+            <span class="cm-name">ニシノティアモ</span>
+            <span class="cm-jockey">津村明秀</span>
+            <span class="cm-tag">ブリンカーで一変</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-unk">？ 未確認</span><span class="bd bd-up">○ 延長プラス</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>アイルランドT 7着</strong>
+            <span class="cm-q">「良い時のスイッチが入らない。道具など工夫したい」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>道悪についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>上原師「延びた方がいいと思っていたので問題ない」</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>2025年2月の喉の手術も影響なし。津村騎手の進言でブリンカー初装着</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-3">3</span>
+            <span class="cm-num">6</span>
+            <span class="cm-name">ヴーレヴー</span>
+            <span class="cm-jockey">吉田隼人</span>
+            
+          </div>
+          <div class="cm-badges"><span class="bd bd-good">◎ 道悪こなす</span><span class="bd bd-good">◎ 2200m太鼓判</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>オールカマー 3着</strong>
+            <span class="cm-q">「イン先行有利と読んで乗ってイメージ通り。距離も問題ありませんでした」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>武幸師「道悪はこなせる」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>武幸師「前走の競馬ができれば2200mでも」</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし。精神面が落ち着き折り合い改善</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-4">4</span>
+            <span class="cm-num">7</span>
+            <span class="cm-name">カムニャック</span>
+            <span class="cm-jockey">川田将雅</span>
+            <span class="cm-tag">前哨戦1着</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-up">○ 陣営に温度差</span><span class="bd bd-good">◎ 問題なし</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>アイルランドT 1着</strong>（川田将雅）
+            <span class="cm-q">「テンションが高かったが辛抱してくれた。1回使ったことで抜けてくれれば」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>友道師「少々の雨は大丈夫」× 川田騎手「走ってみないと分からない」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>川田騎手「距離は全く問題ありません」（2025オークス馬）</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>約2週間の特訓＋2重メンコでテンション対策</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-4">4</span>
+            <span class="cm-num">8</span>
+            <span class="cm-name">レーゼドラマ</span>
+            <span class="cm-jockey">松若風馬</span>
+            <span class="cm-tag">気性面の立て直し</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-unk">？ 未確認</span><span class="bd bd-unk">？ 未確認</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>チャレンジC 7着</strong>
+            <span class="cm-q">「ゲート入りでメンタルが良くなく、直線で気を抜く面も」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>道悪についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>距離についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-5">5</span>
+            <span class="cm-num">9</span>
+            <span class="cm-name">クイーンズウォーク</span>
+            <span class="cm-jockey">Ｃ．デムーロ</span>
+            <span class="cm-tag">敗因が掴めず</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-bad">△ 良馬場希望</span><span class="bd bd-unk">？ 未確認</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>アイルランドT 8着</strong>（西村淳也）
+            <span class="cm-q">「リズム重視で競馬をしたが、最後は脚が使えなかった。敗因は分かりません」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>中内田師「重馬場でも結果は出しているが、できれば良馬場の方が良さが出る」（ラジオNIKKEI）</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>距離についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-5">5</span>
+            <span class="cm-num">10</span>
+            <span class="cm-name">セキトバイースト</span>
+            <span class="cm-jockey">浜中俊</span>
+            <span class="cm-tag">道悪で一変</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-good">◎ 渋り歓迎</span><span class="bd bd-bad">△ やや長い</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>アイルランドT 15着</strong>
+            <span class="cm-q">「速い馬場が合わなかったのが一番。休み明けで動かない」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>四位師「時計の速い馬場は合わなかった」→渋る馬場は前向き</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>四位師「少し長い気もするが、昨年同じローテで6着」</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>2024年2月に熱発で回避も近年の報道なし</span></div>
+        </div>
+        <div class="cm-card cm-hot">
+          <div class="cm-head">
+            <span class="waku-badge waku-6">6</span>
+            <span class="cm-num">11</span>
+            <span class="cm-name">ジュウリョクピエロ</span>
+            <span class="cm-jockey">今村聖奈</span>
+            <span class="cm-tag">特注</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-unk">？ 裏取りなし</span><span class="bd bd-good">◎ 実績十分</span><span class="bd bd-warn">△ 頓挫→回復</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>オークス 1着</strong>（今村聖奈）
+            <span class="cm-q">「前半ムキになるところはあったが、途中からリズム良く走った」</span><span class="cm-q-sub">パドックでは発汗、気合いの乗りが高め</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>「渋る分にはプラス」は本人発言の裏取りが取れず。今村騎手は「道悪に先入観を持たず」と慎重</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>オークス（2400m）1着から短縮。距離面の裏付けは十分</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>骨折ではなく10月上旬の便秘（軽い疝痛）で秋華賞を見送り→その後完全回復（寺島師「予定通り」）</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-6">6</span>
+            <span class="cm-num">12</span>
+            <span class="cm-name">シャドウメテオ</span>
+            <span class="cm-jockey">三浦皇成</span>
+            
+          </div>
+          <div class="cm-badges"><span class="bd bd-good">◎ 不問・歓迎</span><span class="bd bd-good">◎ 同距離連勝</span><span class="bd bd-ok">－ 不安なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>新潟牝馬S 1着</strong>
+            <span class="cm-q">「気分屋だが当日は冷静に走り、思った通りの脚」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>金成師「雨はこの馬にはあまり関係ない」（見出しも「枠も天気も不問」／スポニチ）</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>金成師「連勝した2200m」</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>スクミ（筋肉のこわばり）は解消済み「今回は不安要素がない」</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-7">7</span>
+            <span class="cm-num">13</span>
+            <span class="cm-name">ジョスラン</span>
+            <span class="cm-jockey">Ｃ．ルメール</span>
+            <span class="cm-tag">上昇ムード</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-up">○ 多少なら可</span><span class="bd bd-up">○ 折り合い鍵</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>アイルランドT 2着</strong>（Ｃ．ルメール）
+            <span class="cm-q">「反応は前走よりも良かった」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>良馬場以外は未経験。鹿戸師「多少なら血統的にもこなせそう」／成田助手「楽しみと心配が半分ずつ」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>最長2200mへの挑戦だが、ルメール騎手が継続騎乗</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-7">7</span>
+            <span class="cm-num">14</span>
+            <span class="cm-name">チェルヴィニア</span>
+            <span class="cm-jockey">Ｔ．マーカンド</span>
+            <span class="cm-tag">精神面が鍵</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-unk">？ 未確認</span><span class="bd bd-unk">？ 未確認</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>新潟記念 8着</strong>
+            <span class="cm-q">「進んでいかず、ファイトできない精神状態だった」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>道悪についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>距離についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>気性面の立て直しが今回のテーマ</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-7">7</span>
+            <span class="cm-num">15</span>
+            <span class="cm-name">ラフターラインズ</span>
+            <span class="cm-jockey">武豊</span>
+            <span class="cm-tag">約6か月ぶり</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-up">○ 師は中立</span><span class="bd bd-up">○ 適性あり</span><span class="bd bd-warn">⚠ 故障明け</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>オークス 3着</strong>（Ｄ．レーン）
+            <span class="cm-q">「落ち着いて走れ、終いの脚は素晴らしかった」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>小笠師「道悪はみんな同じ条件」／武豊「キャリアが浅いので極端な馬場はどうか」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>小笠師「京都の2200もいい」／武豊も「合っている距離」</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>6月に左前脚手根骨骨折（全治3か月以上・手術不要）→9月に右前脚蹄の熱感で毎日王冠を回避。約6か月ぶりの実戦（小笠師「体調はとてもいい」）</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-8">8</span>
+            <span class="cm-num">16</span>
+            <span class="cm-name">アクアヴァーナル</span>
+            <span class="cm-jockey">松山弘平</span>
+            <span class="cm-tag">距離も馬場も慎重</span>
+          </div>
+          <div class="cm-badges"><span class="bd bd-bad">△ 雨NG</span><span class="bd bd-bad">△ 2200m懸念</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>京都大賞典 3着</strong>（松山弘平）
+            <span class="cm-q">「キックバックも我慢して、成長を感じた」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>松山騎手「雨は降ってほしくない」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>四位師「2200mがひとつ懸念材料」（ラジオNIKKEI）</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-8">8</span>
+            <span class="cm-num">17</span>
+            <span class="cm-name">ケリフレッドアスク</span>
+            <span class="cm-jockey">北村友一</span>
+            
+          </div>
+          <div class="cm-badges"><span class="bd bd-unk">？ 未確認</span><span class="bd bd-up">○ 問題なし</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>新潟牝馬S 5着</strong>
+            <span class="cm-q cm-q-unk">前走後コメント未確認（掲載記事が1〜4着のみ／他媒体でも確認取れず）</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>道悪についての陣営コメントは確認できず</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>陣営「距離は問題ない」趣旨</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+        <div class="cm-card">
+          <div class="cm-head">
+            <span class="waku-badge waku-8">8</span>
+            <span class="cm-num">18</span>
+            <span class="cm-name">コガネノソラ</span>
+            <span class="cm-jockey">丹内祐次</span>
+            
+          </div>
+          <div class="cm-badges"><span class="bd bd-good">◎ 重馬場OK</span><span class="bd bd-up">○ 問題なし</span><span class="bd bd-ok">－ 故障なし</span></div>
+          <div class="cm-prev">
+            <span class="cm-prev-label">前走</span> <strong>クイーンS 2着</strong>
+            <span class="cm-q">「リズムは完璧。勝ち馬に先に動かれた差だけ。やはり力のある馬」</span>
+          </div>
+          <div class="cm-row"><span class="k">道悪</span><span>丹内騎手「重馬場も苦にしない」／菊沢師「高速決着より、他馬が減点になるもつれた展開が好都合」</span></div>
+          <div class="cm-row"><span class="k">距離</span><span>陣営「距離は問題ない」趣旨（師は「やってみないと分からない」と少し慎重）</span></div>
+          <div class="cm-row"><span class="k">状態</span><span>故障・頓挫の報道なし</span></div>
+        </div>
+      </div>
+      <div class="cm-src">
+        ※陣営・騎手のコメントはラジオNIKKEI／サンスポ／デイリー／スポニチ等の報道で確認できた発言のみを掲載しています。裏取りが取れないものは「裏取りなし」「未確認」と明記しました（11月15日時点）。
       </div>
     </article>
 
@@ -1064,7 +1242,7 @@
       <div class="data-card-body">
         正面スタンド前からスタートし、外回りコースを1周強走るレイアウト。<br>
         最大の勝負所は向正面半ばから始まる「3コーナーの丘（高低差約4mの淀の坂）」。坂の頂上から下り坂にかけてペースが上がり、直線入口でいかに脚を温存しながらスムーズに外へ出せるかが問われます。<br>
-        平坦な直線は約404m。純粋な一瞬のキレ味勝負というよりは、**長く良い脚を使えるスタミナ・持続力型の差し馬**が台頭しやすい舞台です。
+        平坦な直線は約404m。純粋な一瞬のキレ味勝負というよりは、<strong>長く良い脚を使えるスタミナ・持続力型の差し馬</strong>が台頭しやすい舞台です。
       </div>
     </article>
 
