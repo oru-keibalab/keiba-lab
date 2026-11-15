@@ -476,6 +476,7 @@
       text-decoration: none;
     }
 
+/* ==== CM-CSS ==== */
     /* ── 陣営コメント比較シート（スマホ最優先カード） ── */
     .cm-grid {
       display: grid;
@@ -595,6 +596,7 @@
     .cm-matrix {
       width: 100%;
       border-collapse: collapse;
+      table-layout: fixed;
       font-size: 11.5px;
       margin-top: 8px;
     }
@@ -639,6 +641,7 @@
       line-height: 1.6;
       margin-top: 8px;
     }
+    /* ==== /CM-CSS ==== */
   </style>
 </head>
 <body>
@@ -781,11 +784,11 @@
       <table class="cm-matrix">
         <thead>
           <tr>
-            <th class="mx-num">馬番</th>
-            <th class="mx-name-h">馬名</th>
-            <th>道悪</th>
-            <th>距離</th>
-            <th>状態</th>
+            <th class="mx-num" style="width: 34px;">馬番</th>
+            <th class="mx-name-h" style="width: 44%;">馬名</th>
+            <th style="width: 17%;">道悪</th>
+            <th style="width: 17%;">距離</th>
+            <th style="width: 17%;">状態</th>
           </tr>
         </thead>
         <tbody>
