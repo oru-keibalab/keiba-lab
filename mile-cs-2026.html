@@ -312,21 +312,16 @@
     .waku-7 { background: #ea580c; color: #ffffff; }
     .waku-8 { background: #ec4899; color: #ffffff; }
     .horse-highlight { background: #fef3c7 !important; }
-    /* 確定枠順テーブル（スマホ幅で横スクロールなし） */
-    .waku-table { table-layout: fixed; width: 100%; min-width: 0; font-size: 12px; }
-    .waku-table th, .waku-table td { padding: 7px 5px; vertical-align: middle; }
-    .waku-table .ctr { text-align: center; }
-    .waku-table .num { font-weight: 800; color: #0f172a; }
-    .waku-table .mk { display: inline-block; width: 15px; font-size: 13px; }
-    .waku-table .nm { font-weight: 700; color: #0f172a; line-height: 1.35; }
-    .waku-table .nm .sub { display: block; font-size: 10px; font-weight: 500; color: #64748b; }
-    .waku-table .jk { font-size: 11px; color: #334155; }
-    .waku-table .cm { font-size: 10.5px; color: #475569; line-height: 1.35; }
-    .waku-table td:nth-child(1) { width: 34px; }
-    .waku-table td:nth-child(2) { width: 26px; }
-    .waku-table th:nth-child(2) { width: 26px; }
-    .waku-table td:nth-child(4) { width: 78px; }
-    .waku-table td:nth-child(5) { width: 118px; }
+    /* 確定枠順リスト（スマホ幅390pxで横スクロールなし） */
+    .waku-list { border-top: 1px solid #e2e8f0; }
+    .wl-row { padding: 9px 2px 10px; border-bottom: 1px solid #e2e8f0; }
+    .wl-row.wl-hot { background: #fff1f2; margin: 0 -10px; padding: 9px 10px 10px; border-radius: 8px; }
+    .wl-head { display: flex; align-items: center; gap: 7px; }
+    .wl-num { font-weight: 900; font-size: 14px; color: #0f172a; min-width: 17px; }
+    .wl-name { font-weight: 800; font-size: 14px; color: #0f172a; flex: 1 1 auto; min-width: 0; }
+    .wl-mark { font-weight: 900; font-size: 15px; min-width: 16px; text-align: right; }
+    .wl-sub { font-size: 11px; color: #64748b; margin-top: 2px; padding-left: 29px; }
+    .wl-cm { font-size: 11px; color: #475569; margin-top: 2px; padding-left: 29px; line-height: 1.45; }
 
     .data-green {
       color: var(--accent-green);
@@ -1223,32 +1218,187 @@
       <p class="note" style="margin-top:0;">
         11月20日（金）9時すぎに枠番・馬番が確定しました。<b>馬番順</b>に並べ、印は管理人おるの最終印です（◎本命／○対抗／▲単穴／△連下／☆妙味）。オッズは11/20 9:30時点の予想オッズ。
       </p>
-      <div class="tbl-wrap">
-        <table class="data-table waku-table">
-          <thead>
-            <tr><th class="ctr">枠</th><th class="ctr">番</th><th>馬名 / 性齢・斤量・予想オッズ</th><th>騎手</th><th>ひとこと</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="ctr"><span class="waku-badge waku-1">1</span></td><td class="ctr num">1</td><td class="nm"><span class="mk">　</span>エルデナリ<span class="sub">セ3 57.0kg ／ 8.4倍(4人気)</span></td><td class="jk">M.バルザローナ</td><td class="cm">仏G1馬。初来日・海外調教馬で適性は読みにくい</td></tr>
-            <tr class="row-hot"><td class="ctr"><span class="waku-badge waku-1">1</span></td><td class="ctr num">2</td><td class="nm"><span class="mk" style="color:#e11d48; font-weight:900;">◎</span><strong>エンブロイダリー</strong><span class="sub">牝4 56.0kg ／ 4.2倍(1人気)</span></td><td class="jk">C.ルメール</td><td class="cm">データ4項目クリア・マイルG1馬。内枠から好位</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-2">2</span></td><td class="ctr num">3</td><td class="nm"><span class="mk">　</span>ドラゴンブースト<span class="sub">牡4 58.0kg ／ 63.8倍(17人気)</span></td><td class="jk">浜中俊</td><td class="cm">前走毎日王冠11着。前走10着以下は割引</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-2">2</span></td><td class="ctr num">4</td><td class="nm"><span class="mk">　</span>シックスペンス<span class="sub">牡5 58.0kg ／ 17.1倍(9人気)</span></td><td class="jk">A.プーシャン</td><td class="cm">安田記念馬。前走仏G1 10着から巻き返しなるか</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-3">3</span></td><td class="ctr num">5</td><td class="nm"><span class="mk">　</span>アドマイヤズーム<span class="sub">牡4 58.0kg ／ 9.1倍(5人気)</span></td><td class="jk">武豊</td><td class="cm">富士S6着。前走6着以下は連対実績なし</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-3">3</span></td><td class="ctr num">6</td><td class="nm"><span class="mk">　</span>ピコローズ<span class="sub">牝4 56.0kg ／ 80.0倍(18人気)</span></td><td class="jk">三浦皇成</td><td class="cm">京成杯AH1着も前走6番人気。人気薄の一発に</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-4">4</span></td><td class="ctr num">7</td><td class="nm"><span class="mk">　</span>ココナッツブラウン<span class="sub">牝6 56.0kg ／ 25.2倍(11人気)</span></td><td class="jk">北村友一</td><td class="cm">クイーンS1着。6歳は3着内率12.5%</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-4">4</span></td><td class="ctr num">8</td><td class="nm"><span class="mk" style="color:#64748b; font-weight:900;">△</span><strong>ロデオドライブ</strong><span class="sub">牡3 57.0kg ／ 4.7倍(2人気)</span></td><td class="jk">J.モレイラ</td><td class="cm">NHKマイルC馬。2,000m→1,600m短縮は加点</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-5">5</span></td><td class="ctr num">9</td><td class="nm"><span class="mk">　</span>ジューンテイク<span class="sub">牡5 58.0kg ／ 37.7倍(13人気)</span></td><td class="jk">川田将雅</td><td class="cm">オールカマー7着。前走5着以内の条件に届かず</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-5">5</span></td><td class="ctr num">10</td><td class="nm"><span class="mk">　</span>ウォーターリヒト<span class="sub">牡5 58.0kg ／ 52.5倍(15人気)</span></td><td class="jk">幸英明</td><td class="cm">昨年3着の舞台巧者。前走富士S7着から変わり身</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-6">6</span></td><td class="ctr num">11</td><td class="nm"><span class="mk">　</span>ガイアフォース<span class="sub">牡7 58.0kg ／ 11.9倍(7人気)</span></td><td class="jk">西村淳也</td><td class="cm">昨年2着も7歳。7歳以上は10年3着内ゼロ</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-6">6</span></td><td class="ctr num">12</td><td class="nm"><span class="mk" style="color:#d97706; font-weight:900;">☆</span><strong>ワールズエンド</strong><span class="sub">牡5 58.0kg ／ 11.7倍(6人気)</span></td><td class="jk">C.デムーロ</td><td class="cm">京都マイル3戦3勝。単騎逃げなら粘り込み</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-7">7</span></td><td class="ctr num">13</td><td class="nm"><span class="mk">　</span>レザベーション<span class="sub">牡3 57.0kg ／ 43.2倍(14人気)</span></td><td class="jk">田口貫太</td><td class="cm">まほろばS1着で同舞台勝ち。7枠13番は好データ</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-7">7</span></td><td class="ctr num">14</td><td class="nm"><span class="mk" style="color:#059669; font-weight:900;">▲</span><strong>スターアニス</strong><span class="sub">牝3 55.0kg ／ 7.1倍(3人気)</span></td><td class="jk">松山弘平</td><td class="cm">桜花賞馬・3歳55kg最軽量。7枠は好相性</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-7">7</span></td><td class="ctr num">15</td><td class="nm"><span class="mk">　</span>エコロブルーム<span class="sub">牡5 58.0kg ／ 21.4倍(10人気)</span></td><td class="jk">坂井瑠星</td><td class="cm">京成杯AH2着。前走5番人気以内も5歳58kg</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-8">8</span></td><td class="ctr num">16</td><td class="nm"><span class="mk">　</span>スズハローム<span class="sub">牡6 58.0kg ／ 52.7倍(16人気)</span></td><td class="jk">藤懸貴志</td><td class="cm">スワンS2着。前走1,400m組は連対ゼロ</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-8">8</span></td><td class="ctr num">17</td><td class="nm"><span class="mk" style="color:#2563eb; font-weight:900;">○</span><strong>アンパドゥ</strong><span class="sub">牡5 58.0kg ／ 16.9倍(8人気)</span></td><td class="jk">岩田望来</td><td class="cm">富士S2着。2着以内組は2022年以降4連勝中</td></tr>
-            <tr><td class="ctr"><span class="waku-badge waku-8">8</span></td><td class="ctr num">18</td><td class="nm"><span class="mk">　</span>オフトレイル<span class="sub">牡5 58.0kg ／ 25.7倍(12人気)</span></td><td class="jk">菅原明良</td><td class="cm">スワンS3着。前走1,400m組は連対ゼロ</td></tr>
-          </tbody>
-        </table>
+      <div class="waku-list">
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-1">1</span>
+            <span class="wl-num">1</span>
+            <span class="wl-name">エルデナリ</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">セ3 57.0kg ／ M.バルザローナ ／ 8.4倍（4人気）</div>
+          <div class="wl-cm">仏G1馬。初来日・海外調教馬で適性は読みにくい</div>
+        </div>
+        <div class="wl-row wl-hot">
+          <div class="wl-head">
+            <span class="waku-badge waku-1">1</span>
+            <span class="wl-num">2</span>
+            <span class="wl-name">エンブロイダリー</span>
+            <span class="wl-mark" style="color:#e11d48">◎</span>
+          </div>
+          <div class="wl-sub">牝4 56.0kg ／ C.ルメール ／ 4.2倍（1人気）</div>
+          <div class="wl-cm">データ4項目クリア・マイルG1馬。内枠から好位</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-2">2</span>
+            <span class="wl-num">3</span>
+            <span class="wl-name">ドラゴンブースト</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡4 58.0kg ／ 浜中俊 ／ 63.8倍（17人気）</div>
+          <div class="wl-cm">前走毎日王冠11着。前走10着以下は割引</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-2">2</span>
+            <span class="wl-num">4</span>
+            <span class="wl-name">シックスペンス</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ A.プーシャン ／ 17.1倍（9人気）</div>
+          <div class="wl-cm">安田記念馬。前走仏G1 10着から巻き返しなるか</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-3">3</span>
+            <span class="wl-num">5</span>
+            <span class="wl-name">アドマイヤズーム</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡4 58.0kg ／ 武豊 ／ 9.1倍（5人気）</div>
+          <div class="wl-cm">富士S6着。前走6着以下は連対実績なし</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-3">3</span>
+            <span class="wl-num">6</span>
+            <span class="wl-name">ピコローズ</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牝4 56.0kg ／ 三浦皇成 ／ 80.0倍（18人気）</div>
+          <div class="wl-cm">京成杯AH1着も前走6番人気。人気薄の一発に</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-4">4</span>
+            <span class="wl-num">7</span>
+            <span class="wl-name">ココナッツブラウン</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牝6 56.0kg ／ 北村友一 ／ 25.2倍（11人気）</div>
+          <div class="wl-cm">クイーンS1着。6歳は3着内率12.5%</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-4">4</span>
+            <span class="wl-num">8</span>
+            <span class="wl-name">ロデオドライブ</span>
+            <span class="wl-mark" style="color:#64748b">△</span>
+          </div>
+          <div class="wl-sub">牡3 57.0kg ／ J.モレイラ ／ 4.7倍（2人気）</div>
+          <div class="wl-cm">NHKマイルC馬。2,000m→1,600m短縮は加点</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-5">5</span>
+            <span class="wl-num">9</span>
+            <span class="wl-name">ジューンテイク</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ 川田将雅 ／ 37.7倍（13人気）</div>
+          <div class="wl-cm">オールカマー7着。前走5着以内の条件に届かず</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-5">5</span>
+            <span class="wl-num">10</span>
+            <span class="wl-name">ウォーターリヒト</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ 幸英明 ／ 52.5倍（15人気）</div>
+          <div class="wl-cm">昨年3着の舞台巧者。前走富士S7着から変わり身</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-6">6</span>
+            <span class="wl-num">11</span>
+            <span class="wl-name">ガイアフォース</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡7 58.0kg ／ 西村淳也 ／ 11.9倍（7人気）</div>
+          <div class="wl-cm">昨年2着も7歳。7歳以上は10年3着内ゼロ</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-6">6</span>
+            <span class="wl-num">12</span>
+            <span class="wl-name">ワールズエンド</span>
+            <span class="wl-mark" style="color:#d97706">☆</span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ C.デムーロ ／ 11.7倍（6人気）</div>
+          <div class="wl-cm">京都マイル3戦3勝。単騎逃げなら粘り込み</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-7">7</span>
+            <span class="wl-num">13</span>
+            <span class="wl-name">レザベーション</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡3 57.0kg ／ 田口貫太 ／ 43.2倍（14人気）</div>
+          <div class="wl-cm">まほろばS1着で同舞台勝ち。7枠13番は好データ</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-7">7</span>
+            <span class="wl-num">14</span>
+            <span class="wl-name">スターアニス</span>
+            <span class="wl-mark" style="color:#059669">▲</span>
+          </div>
+          <div class="wl-sub">牝3 55.0kg ／ 松山弘平 ／ 7.1倍（3人気）</div>
+          <div class="wl-cm">桜花賞馬・3歳55kg最軽量。7枠は好相性</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-7">7</span>
+            <span class="wl-num">15</span>
+            <span class="wl-name">エコロブルーム</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ 坂井瑠星 ／ 21.4倍（10人気）</div>
+          <div class="wl-cm">京成杯AH2着。前走5番人気以内も5歳58kg</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-8">8</span>
+            <span class="wl-num">16</span>
+            <span class="wl-name">スズハローム</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡6 58.0kg ／ 藤懸貴志 ／ 52.7倍（16人気）</div>
+          <div class="wl-cm">スワンS2着。前走1,400m組は連対ゼロ</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-8">8</span>
+            <span class="wl-num">17</span>
+            <span class="wl-name">アンパドゥ</span>
+            <span class="wl-mark" style="color:#2563eb">○</span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ 岩田望来 ／ 16.9倍（8人気）</div>
+          <div class="wl-cm">富士S2着。2着以内組は2022年以降4連勝中</div>
+        </div>
+        <div class="wl-row">
+          <div class="wl-head">
+            <span class="waku-badge waku-8">8</span>
+            <span class="wl-num">18</span>
+            <span class="wl-name">オフトレイル</span>
+            <span class="wl-mark"></span>
+          </div>
+          <div class="wl-sub">牡5 58.0kg ／ 菅原明良 ／ 25.7倍（12人気）</div>
+          <div class="wl-cm">スワンS3着。前走1,400m組は連対ゼロ</div>
+        </div>
       </div>
       <p class="note-src">出典：JRA発表の出馬表・枠順（2026年11月20日）／予想オッズは11月20日9:30時点。</p>
     </article>
