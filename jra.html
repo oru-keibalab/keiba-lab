@@ -90,6 +90,15 @@
     .rank-badge { font-size: 10px; padding: 1px 6px; }
     .h-name-row { gap: 4px; }
     .h-name-txt { font-size: 12px; }
+
+    /* スマホ幅: 印・馬番・馬名を詰めて短評の可読幅を確保する */
+    @media (max-width: 430px) {
+      .race-card table th:nth-child(1), .race-card table td:nth-child(1) { width: 20px !important; padding: 6px 2px !important; }
+      .race-card table th:nth-child(2), .race-card table td:nth-child(2) { width: 26px !important; padding: 6px 2px !important; }
+      .race-card table th:nth-child(3), .race-card table td:nth-child(3) { width: 102px !important; padding: 6px 4px !important; }
+      .race-card table td:nth-child(4) { font-size: 10.5px !important; line-height: 1.4 !important; padding: 6px 4px !important; }
+      .h-name-txt { font-size: 11.5px; }
+    }
   </style>
 </head>
 <body>
