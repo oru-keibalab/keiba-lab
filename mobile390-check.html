@@ -1,26 +1,30 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>スマホ幅(390px)確認用</title>
-<style>body{margin:0;background:#e5e7eb;font-family:sans-serif}#wrap{padding:8px}iframe{width:390px;height:900px;border:1px solid #94a3b8;background:#fff;display:block}</style>
+<style>
+body{margin:0;background:#e5e7eb;font-family:sans-serif;padding:8px}
+#lbl{font-size:12px;color:#334155;margin-bottom:4px}
+#win{width:390px;height:900px;overflow:hidden;border:1px solid #94a3b8;background:#fff;position:relative}
+#f{width:390px;height:2500px;border:0;display:block;position:absolute;left:0;top:0}
+</style>
 </head><body>
-<div id="wrap"><div style="font-size:12px;color:#334155;margin-bottom:4px">390px 幅（iPhone相当）</div>
-<iframe id="f" src="jra.html"></iframe></div>
+<div id="lbl">390px 幅（iPhone相当）</div>
+<div id="win"><iframe id="f" src="jra.html"></iframe></div>
 <script>
 var f=document.getElementById('f');
-var mode=(location.search.match(/mode=(\w+)/)||[])[1];
+var mode=(location.search.match(/mode=(\w+)/)||[])[1]||'top';
 f.addEventListener('load',function(){
   try{
-    var w=f.contentWindow, d=f.contentDocument;
+    var d=f.contentDocument, y=0;
     if(mode==='card'){
       var cards=d.querySelectorAll('.race-card');
-      for(var i=0;i<cards.length;i++){
-        if(cards[i].querySelector('.rank-badge')){
-          var top=cards[i].getBoundingClientRect().top + w.scrollY - 6;
-          w.scrollTo(0, top); break;
-        }
-      }
+      for(var i=0;i<cards.length;i++){ if(cards[i].querySelector('.rank-badge')){ y=cards[i].getBoundingClientRect().top-6; break; } }
+    } else if(mode==='g1card'){
+      var cards=d.querySelectorAll('.race-card');
+      for(var i=cards.length-1;i>=0;i--){ if(cards[i].querySelector('.rank-badge')){ y=cards[i].getBoundingClientRect().top-6; break; } }
     }
-    if(mode==='g1'){ var g=d.querySelector('#section-sun'); if(g){ var rc=g.querySelectorAll('.race-card')[0]; if(rc){ w.scrollTo(0, rc.getBoundingClientRect().top + w.scrollY - 470);} } }
-  }catch(e){ document.title='ERR '+e.message; }
+    f.style.top=(-y)+'px';
+    document.getElementById('lbl').textContent='390px 幅（iPhone相当） '+mode+' offset='+Math.round(y);
+  }catch(e){ document.getElementById('lbl').textContent='ERR '+e.message; }
 });
 </script>
 </body></html>
