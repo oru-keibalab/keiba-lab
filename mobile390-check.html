@@ -14,19 +14,20 @@ body{margin:0;background:#e5e7eb;font-family:sans-serif;padding:8px}
   var f=document.getElementById('f'), lbl=document.getElementById('lbl');
   var m=(location.search.match(/mode=([a-z0-9]+)/)||[])[1]||'top';
   var n=0;
-  var t=setInterval(function(){
+  function apply(){
     n++;
     try{
       var d=f.contentDocument;
-      if(!d || !d.querySelector('.race-card')){ if(n>40) clearInterval(t); return; }
-      clearInterval(t);
+      if(!d || !d.querySelector('.race-card')){ return; }
       var y=0, cards=d.querySelectorAll('.race-card');
       if(m==='card'){ for(var i=0;i<cards.length;i++){ if(cards[i].querySelector('.rank-badge')){ y=cards[i].getBoundingClientRect().top-6; break; } } }
       else if(m==='last'){ for(var j=cards.length-1;j>=0;j--){ if(cards[j].querySelector('.rank-badge')){ y=cards[j].getBoundingClientRect().top-6; break; } } }
       f.style.top=(-y)+'px';
       lbl.textContent='390px 幅（iPhone相当） '+m+' offset='+Math.round(y);
-    }catch(e){ lbl.textContent='ERR '+e.message; clearInterval(t); }
-  },250);
+      setTimeout(apply,1500); setTimeout(apply,3000); setTimeout(apply,5000);
+    }catch(e){ lbl.textContent='ERR '+e.message; }
+  }
+  var t=setInterval(function(){ apply(); if(n>20) clearInterval(t); },300);
 })();
 </script>
 </body></html>
