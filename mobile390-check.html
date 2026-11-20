@@ -8,23 +8,25 @@ body{margin:0;background:#e5e7eb;font-family:sans-serif;padding:8px}
 </style>
 </head><body>
 <div id="lbl">390px 幅（iPhone相当）</div>
-<div id="win"><iframe id="f" src="jra.html"></iframe></div>
+<div id="win"><iframe id="f" aria-hidden="true" tabindex="-1" src="jra.html"></iframe></div>
 <script>
-var f=document.getElementById('f');
-var mode=(location.search.match(/mode=(\w+)/)||[])[1]||'top';
-f.addEventListener('load',function(){
-  try{
-    var d=f.contentDocument, y=0;
-    if(mode==='card'){
-      var cards=d.querySelectorAll('.race-card');
-      for(var i=0;i<cards.length;i++){ if(cards[i].querySelector('.rank-badge')){ y=cards[i].getBoundingClientRect().top-6; break; } }
-    } else if(mode==='g1card'){
-      var cards=d.querySelectorAll('.race-card');
-      for(var i=cards.length-1;i>=0;i--){ if(cards[i].querySelector('.rank-badge')){ y=cards[i].getBoundingClientRect().top-6; break; } }
-    }
-    f.style.top=(-y)+'px';
-    document.getElementById('lbl').textContent='390px 幅（iPhone相当） '+mode+' offset='+Math.round(y);
-  }catch(e){ document.getElementById('lbl').textContent='ERR '+e.message; }
-});
+(function(){
+  var f=document.getElementById('f'), lbl=document.getElementById('lbl');
+  var m=(location.search.match(/mode=([a-z0-9]+)/)||[])[1]||'top';
+  var n=0;
+  var t=setInterval(function(){
+    n++;
+    try{
+      var d=f.contentDocument;
+      if(!d || !d.querySelector('.race-card')){ if(n>40) clearInterval(t); return; }
+      clearInterval(t);
+      var y=0, cards=d.querySelectorAll('.race-card');
+      if(m==='card'){ for(var i=0;i<cards.length;i++){ if(cards[i].querySelector('.rank-badge')){ y=cards[i].getBoundingClientRect().top-6; break; } } }
+      else if(m==='last'){ for(var j=cards.length-1;j>=0;j--){ if(cards[j].querySelector('.rank-badge')){ y=cards[j].getBoundingClientRect().top-6; break; } } }
+      f.style.top=(-y)+'px';
+      lbl.textContent='390px 幅（iPhone相当） '+m+' offset='+Math.round(y);
+    }catch(e){ lbl.textContent='ERR '+e.message; clearInterval(t); }
+  },250);
+})();
 </script>
 </body></html>
