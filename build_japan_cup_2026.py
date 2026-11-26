@@ -178,7 +178,7 @@ BODY = '''<!DOCTYPE html>
     <h2 class="section-title">📋 開催概要</h2>
     <article class="data-card">
       <div class="tbl-wrap">
-        <table class="data-table" style="min-width: 420px;">
+        <table class="data-table" style="width: 100%;">
           <tbody>
             <tr><th style="width:34%;">レース名</th><td><strong>第46回 ジャパンカップ（G1）</strong></td></tr>
             <tr><th>開催日</th><td>2026年11月29日（日） 5回東京8日</td></tr>
